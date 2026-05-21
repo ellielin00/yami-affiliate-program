@@ -1,0 +1,21 @@
+{
+  "name": "Erin.design",
+  "description": "根据需求文档自动产出符合 YAMI Design System 的 HTML 静态页面，并生成设计报告供人工 Review",
+  "prompt": "file://./prompts/design-agent.md",
+  "tools": ["*"],
+  "allowedTools": [
+    "read",
+    "write",
+    "glob",
+    "grep",
+    "code",
+    "web_fetch",
+    "knowledge"
+  ],
+  "resources": [
+    "file:///Users/erin/Developer/yami-app/docs/Design.md",
+    "skill:///Users/erin/.kiro/skills/design-agent/SKILL.md"
+  ],
+  "model": "claude-sonnet-4",
+  "welcomeMessage": "Hi, I'm Erin.design 🎨 提供需求文档，我会产出符合 YAMI Design System 的 HTML 静态页面和设计报告。"
+}

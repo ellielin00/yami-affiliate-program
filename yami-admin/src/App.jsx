@@ -1,0 +1,124 @@
+import React, { useState } from 'react'
+import { Layout, Menu, Breadcrumb } from 'antd'
+import {
+  AppstoreFilled, DashboardFilled, ProfileFilled,
+  ContactsFilled, WalletFilled, GiftFilled, StarFilled,
+  PercentageOutlined
+} from '@ant-design/icons'
+import { CreatorsProvider } from './context/CreatorsContext'
+import DashboardPage from './pages/DashboardPage'
+import ReviewPage from './pages/ReviewPage'
+import CreatorsPage from './pages/CreatorsPage'
+import PayoutsPage from './pages/PayoutsPage'
+import SamplesPage from './pages/SamplesPage'
+import RecommendedPage from './pages/RecommendedPage'
+import CommissionPage from './pages/CommissionPage'
+
+const { Sider, Content, Header } = Layout
+
+const menuItems = [
+  {
+    key: 'creators',
+    icon: <AppstoreFilled />,
+    label: '创作者中心',
+    children: [
+      { key: 'dashboard', label: '› 数据概览' },
+      { key: 'review',    label: '› 创作者审核' },
+      { key: 'manage',    label: '› 创作者管理' },
+      { key: 'payouts',   label: '› 结账管理' },
+      { key: 'samples',   label: '› 样品管理' },
+      { key: 'recommended', label: '› 推荐商品管理' },
+      { key: 'commission', label: '› 佣金管理' },
+    ],
+  },
+]
+
+const pageTitles = {
+  dashboard: '数据概览',
+  review: '创作者审核',
+  manage: '创作者管理',
+  payouts: '结账管理',
+  samples: '样品管理',
+  recommended: '推荐商品管理',
+  commission: '佣金管理',
+}
+
+export default function App() {
+  const [currentPage, setCurrentPage] = useState('dashboard')
+
+  const renderPage = () => {
+    switch (currentPage) {
+      case 'dashboard': return <DashboardPage onNavigate={setCurrentPage} />
+      case 'review': return <ReviewPage />
+      case 'manage': return <CreatorsPage />
+      case 'payouts': return <PayoutsPage />
+      case 'samples': return <SamplesPage />
+      case 'recommended': return <RecommendedPage />
+      case 'commission': return <CommissionPage />
+      default: return <DashboardPage />
+    }
+  }
+
+  return (
+    <CreatorsProvider>
+    <Layout style={{ minHeight: '100vh' }}>
+      <Sider
+        width={220}
+        theme="dark"
+        style={{ position: 'fixed', height: '100vh', left: 0, top: 0, overflow: 'auto' }}
+      >
+        <div style={{
+          padding: '16px 24px',
+          borderBottom: '1px solid rgba(255,255,255,0.08)',
+          display: 'flex', alignItems: 'center', gap: 8
+        }}>
+          <div style={{
+            width: 28, height: 28, borderRadius: 6,
+            background: '#16997F',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            fontSize: 14, fontWeight: 700, color: '#fff', flexShrink: 0
+          }}>Y</div>
+          <span style={{ color: '#fff', fontWeight: 600, fontSize: 15, letterSpacing: '-0.01em' }}>
+            Yami Admin
+          </span>
+        </div>
+        <Menu
+          theme="dark"
+          mode="inline"
+          defaultOpenKeys={['creators']}
+          selectedKeys={[currentPage]}
+          items={menuItems}
+          onClick={({ key }) => setCurrentPage(key)}
+          style={{ marginTop: 4, borderRight: 0 }}
+        />
+      </Sider>
+
+      <Layout style={{ marginLeft: 220 }}>
+        <Header style={{
+          background: '#fff',
+          padding: '0 24px',
+          borderBottom: '1px solid rgba(0,0,0,0.08)',
+          display: 'flex', alignItems: 'center',
+          justifyContent: 'space-between',
+          position: 'sticky', top: 0, zIndex: 10,
+          height: 56, lineHeight: '56px',
+        }}>
+          <Breadcrumb items={[
+            { title: currentPage === 'dashboard' ? 'Yami Admin' : '创作者中心' },
+            { title: pageTitles[currentPage] },
+          ]} />
+          <div style={{ fontSize: 13, color: '#666' }}>erin.lin · 管理员</div>
+        </Header>
+
+        <Content style={{
+          padding: 24,
+          background: '#F5F7FA',
+          minHeight: 'calc(100vh - 56px)'
+        }}>
+          {renderPage()}
+        </Content>
+      </Layout>
+    </Layout>
+    </CreatorsProvider>
+  )
+}
