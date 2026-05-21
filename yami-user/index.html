@@ -44,6 +44,23 @@
       color: #666;
       line-height: 1.6;
     }
+    .version-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 14px;
+      padding: 8px 16px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .version-badge.v-with-report {
+      background: #eff6ff;
+      color: #2563eb;
+      border: 1px solid #bfdbfe;
+    }
+    .version-badge svg { width: 14px; height: 14px; }
     .card-grid {
       display: flex;
       flex-direction: column;
@@ -148,7 +165,11 @@
     <div class="slide">
       <div class="slide-header">
         <h1>Yami<span class="red-dot">.</span> Creator Program</h1>
-        <p>HTML Prototype Directory</p>
+        <p>Prototype Directory</p>
+        <div class="version-badge v-with-report">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          版本 A — 含独立 Report 页面
+        </div>
       </div>
 
       <div class="card-grid">
@@ -233,7 +254,7 @@
         </div>
       </div>
 
-      <div class="footer-note">Yami Creator Program · HTML Prototype · 2026</div>
+      <div class="footer-note">Yami Creator Program · Prototype · 2026</div>
     </div>
   </div>
 
