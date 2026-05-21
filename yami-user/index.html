@@ -6724,14 +6724,7 @@ input, select { font-family: inherit; }
         <span class="pm-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
       </div>
 
-      <div class="profile-menu-item affiliate-only" onclick="showPage('page-upgrade-influencer')" style="display:none;background:linear-gradient(90deg,var(--emerald-50),#fff);border-left:3px solid var(--emerald-500);">
-        <div class="pm-icon" style="background:var(--emerald-50);color:var(--emerald-600);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
-        <div class="pm-content">
-          <div class="pm-title" style="color:var(--emerald-600);">Upgrade to Influencer</div>
-          <div class="pm-desc">Unlock samples, collections &amp; higher commissions</div>
-        </div>
-        <span class="pm-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
-      </div>
+
       <div class="profile-menu-item influencer-only" onclick="showPage('page-sample-history')">
         <div class="pm-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
         <div class="pm-content">
@@ -6923,143 +6916,6 @@ input, select { font-family: inherit; }
   </div>
 </div>
 
-<!-- ==================== PAGE: UPGRADE TO INFLUENCER ==================== -->
-<div class="page dashboard-page" id="page-upgrade-influencer">
-  <nav class="topnav">
-    <div class="container">
-      <div class="topnav-logo">Yami<span class="red-dot">.</span> <span style="font-weight:500;font-size:14px;color:var(--text-secondary);margin-left:6px;">Creators</span></div>
-      <div class="topnav-links" style="margin-left:24px;">
-        <a href="#" onclick="event.preventDefault();showPage('page-dashboard-home')">Dashboard</a>
-        <a href="#" onclick="event.preventDefault();showPage('page-dashboard-share')">Share</a>
-        <a href="#" onclick="event.preventDefault();showPage('page-dashboard-report')">Report</a>
-        <a href="#" onclick="event.preventDefault();showPage('page-dashboard-wallet')">Wallet</a>
-        <a href="#" class="active" onclick="event.preventDefault();showPage('page-dashboard-profile')">Profile</a>
-      </div>
-      <div class="topnav-actions">
-        <button class="locale-btn" onclick="openLocaleDrawer()"><span class="flag">🇺🇸</span><span class="locale-label">EN</span></button>
-        <div class="topnav-user" onclick="toggleUserDropdown(this)"><div class="topnav-avatar">A</div><span class="name">Amy Chen</span></div>
-      </div>
-    </div>
-  </nav>
-  <div class="dashboard-body" style="max-width:720px;width:100%;">
-    <div class="subpage-header">
-      <button class="subpage-back" onclick="showPage('page-dashboard-profile')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg> Back to Profile</button>
-      <h1>Upgrade to Influencer</h1>
-    </div>
-
-    <!-- Current status -->
-    <div class="collection-info-card" style="margin-bottom:20px;display:flex;align-items:center;gap:16px;">
-      <div style="width:48px;height:48px;border-radius:12px;background:var(--neutral-100);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--neutral-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
-      </div>
-      <div>
-        <div style="font-size:13px;color:var(--text-secondary);margin-bottom:2px;">Current Status</div>
-        <div style="font-size:16px;font-weight:500;color:var(--neutral-950);">Affiliate</div>
-      </div>
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--neutral-300)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin:0 8px;"><polyline points="9 18 15 12 9 6"/></svg>
-      <div style="width:48px;height:48px;border-radius:12px;background:var(--emerald-50);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--emerald-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-      </div>
-      <div>
-        <div style="font-size:13px;color:var(--text-secondary);margin-bottom:2px;">Upgrade to</div>
-        <div style="font-size:16px;font-weight:500;color:var(--emerald-600);">Influencer</div>
-      </div>
-    </div>
-
-    <!-- What you unlock -->
-    <div class="collection-info-card" style="margin-bottom:20px;">
-      <h3 style="font-size:16px;font-weight:500;color:var(--neutral-950);margin-bottom:16px;">What you'll unlock</h3>
-      <div style="display:flex;flex-direction:column;gap:14px;">
-        <div style="display:flex;align-items:center;gap:12px;">
-          <div style="width:36px;height:36px;border-radius:10px;background:var(--red-50);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;">💰</div>
-          <div><div style="font-size:14px;font-weight:500;color:var(--neutral-900);">Higher commission — up to 15%</div><div style="font-size:13px;color:var(--text-secondary);">vs. 5–8% as Affiliate</div></div>
-        </div>
-        <div style="display:flex;align-items:center;gap:12px;">
-          <div style="width:36px;height:36px;border-radius:10px;background:var(--emerald-50);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;">🎁</div>
-          <div><div style="font-size:14px;font-weight:500;color:var(--neutral-900);">Free product samples every month</div><div style="font-size:13px;color:var(--text-secondary);">Try trending products before sharing</div></div>
-        </div>
-        <div style="display:flex;align-items:center;gap:12px;">
-          <div style="width:36px;height:36px;border-radius:10px;background:var(--blue-50);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;">📂</div>
-          <div><div style="font-size:14px;font-weight:500;color:var(--neutral-900);">Create shareable product collections</div><div style="font-size:13px;color:var(--text-secondary);">Curate themed lists for your audience</div></div>
-        </div>
-        <div style="display:flex;align-items:center;gap:12px;">
-          <div style="width:36px;height:36px;border-radius:10px;background:var(--amber-50);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;">🏷️</div>
-          <div><div style="font-size:14px;font-weight:500;color:var(--neutral-900);">20% personal shopping discount</div><div style="font-size:13px;color:var(--text-secondary);">vs. 10% as Affiliate</div></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Requirements -->
-    <div class="collection-info-card" style="margin-bottom:24px;">
-      <h3 style="font-size:16px;font-weight:500;color:var(--neutral-950);margin-bottom:16px;">Upgrade requirements</h3>
-      <div style="display:flex;flex-direction:column;gap:12px;">
-        <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--neutral-50);border-radius:var(--radius-sm);">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--neutral-400)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          <div style="flex:1;">
-            <div style="font-size:14px;font-weight:500;color:var(--neutral-900);">5,000+ followers on at least one platform</div>
-            <div style="font-size:13px;color:var(--text-secondary);">Instagram, TikTok, YouTube, or Pinterest</div>
-          </div>
-          <span style="font-size:12px;font-weight:500;color:var(--amber-500);background:var(--amber-50);padding:3px 10px;border-radius:100px;">Required</span>
-        </div>
-        <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--neutral-50);border-radius:var(--radius-sm);">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--neutral-400)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-          <div style="flex:1;">
-            <div style="font-size:14px;font-weight:500;color:var(--neutral-900);">Content relevant to Asian products</div>
-            <div style="font-size:13px;color:var(--text-secondary);">Food, beauty, lifestyle, or home categories</div>
-          </div>
-          <span style="font-size:12px;font-weight:500;color:var(--amber-500);background:var(--amber-50);padding:3px 10px;border-radius:100px;">Required</span>
-        </div>
-        <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--neutral-50);border-radius:var(--radius-sm);">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--neutral-400)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          <div style="flex:1;">
-            <div style="font-size:14px;font-weight:500;color:var(--neutral-900);">Review within 7 business days</div>
-            <div style="font-size:13px;color:var(--text-secondary);">We'll notify you by email once reviewed</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Apply form -->
-    <div class="collection-info-card" style="margin-bottom:24px;">
-      <h3 style="font-size:16px;font-weight:500;color:var(--neutral-950);margin-bottom:6px;">Apply for Influencer status</h3>
-      <p style="font-size:14px;color:var(--text-secondary);margin-bottom:20px;">Share your social media profile with the most followers so we can verify your eligibility.</p>
-      <div style="display:flex;flex-direction:column;gap:16px;">
-        <div class="collection-info-field">
-          <label>Platform <span style="color:var(--ui-primary);">*</span></label>
-          <select style="width:100%;height:44px;border:1px solid var(--neutral-300);border-radius:var(--radius-sm);padding:0 14px;font-size:14px;font-family:var(--font-main);color:var(--text-primary);">
-            <option value="">Select your main platform</option>
-            <option>Instagram</option>
-            <option>TikTok</option>
-            <option>YouTube</option>
-            <option>Pinterest</option>
-            <option>X / Twitter</option>
-          </select>
-        </div>
-        <div class="collection-info-field">
-          <label>Profile URL or Username <span style="color:var(--ui-primary);">*</span></label>
-          <input type="text" placeholder="Paste your profile link or @username" style="width:100%;height:44px;border:1px solid var(--neutral-300);border-radius:var(--radius-sm);padding:0 14px;font-size:14px;font-family:var(--font-main);">
-        </div>
-        <div class="collection-info-field">
-          <label>Follower Count <span style="color:var(--ui-primary);">*</span></label>
-          <select style="width:100%;height:44px;border:1px solid var(--neutral-300);border-radius:var(--radius-sm);padding:0 14px;font-size:14px;font-family:var(--font-main);color:var(--text-primary);">
-            <option value="">Select range</option>
-            <option>5K – 10K</option>
-            <option>10K – 50K</option>
-            <option>50K – 100K</option>
-            <option>100K+</option>
-          </select>
-        </div>
-        <div class="collection-info-field">
-          <label>Tell us about your content (optional)</label>
-          <textarea placeholder="What kind of content do you create? What Asian products do you love sharing?" style="width:100%;border:1px solid var(--neutral-300);border-radius:var(--radius-sm);padding:12px 14px;font-size:14px;font-family:var(--font-main);resize:vertical;min-height:80px;"></textarea>
-        </div>
-      </div>
-    </div>
-
-    <button class="btn-primary large" style="width:100%;" onclick="submitUpgradeApplication()">Submit Upgrade Application</button>
-    <p style="font-size:12px;color:var(--text-secondary);text-align:center;margin-top:12px;">You'll continue to earn as an Affiliate while your application is under review.</p>
-  </div>
-</div>
 
 <!-- ==================== PAGE: AFFILIATE TERMS ==================== -->
 <div class="page dashboard-page" id="page-profile-terms">
@@ -8300,10 +8156,6 @@ window.submitConnectPlatform = function() {
   showToast('\u2713 ' + names.join(', ') + ' connected!');
 };
 
-window.submitUpgradeApplication = function() {
-  showToast('✓ Upgrade application submitted! We\'ll review within 7 business days.');
-  setTimeout(function() { showPage('page-dashboard-profile'); }, 1500);
-};
 
 // ===== Tax Form Flow =====
 var _taxResidency = '';
