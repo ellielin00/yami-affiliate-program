@@ -3123,7 +3123,6 @@ input, select { font-family: inherit; }
   animation:dropIn 150ms ease;
 }
 .nav-dropdown.active { display:block; }
-.nav-dropdown.notif-dropdown.active { display:flex; }
 @keyframes dropIn { from { opacity:0; transform:translateY(-8px); } to { opacity:1; transform:translateY(0); } }
 .nav-dropdown-header { padding:16px 20px; border-bottom:1px solid var(--border-default); }
 .nav-dropdown-header .dd-name { font-size:15px; font-weight:500; color:var(--neutral-950); }
@@ -3139,32 +3138,7 @@ input, select { font-family: inherit; }
 .nav-dropdown-item.danger svg { color:var(--ui-primary); }
 .nav-dropdown-divider { height:1px; background:var(--border-default); margin:4px 0; }
 
-/* Notification dropdown */
-.notif-dropdown { min-width:360px; max-height:480px; }
-.notif-dropdown.active { display:flex; flex-direction:column; }
-.notif-dropdown .nav-dropdown-header { display:flex; justify-content:space-between; align-items:center; }
-.notif-dropdown .mark-read { font-size:12px; color:var(--ui-primary); font-weight:500; cursor:pointer; }
-.notif-dropdown .mark-read:hover { text-decoration:underline; }
-.notif-list { overflow-y:auto; flex:1; max-height:380px; }
-.notif-item {
-  display:flex; gap:12px; padding:14px 20px; cursor:pointer;
-  transition:background var(--transition); position:relative;
-}
-.notif-item:hover { background:var(--neutral-50); }
-.notif-item.unread::before {
-  content:''; position:absolute; left:8px; top:50%; transform:translateY(-50%);
-  width:6px; height:6px; border-radius:50%; background:var(--ui-primary);
-}
-.notif-icon { width:36px; height:36px; border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:18px; }
-.notif-icon.order { background:var(--emerald-50); }
-.notif-icon.payout { background:var(--amber-50); }
-.notif-icon.sample { background:var(--blue-50); }
-.notif-icon.promo { background:var(--purple-50); }
-.notif-icon.tax { background:var(--red-50); }
-.notif-content { flex:1; min-width:0; }
-.notif-content .notif-text { font-size:13px; color:var(--text-primary); line-height:1.5; }
-.notif-content .notif-text strong { font-weight:500; }
-.notif-content .notif-time { font-size:11px; color:var(--text-secondary); margin-top:2px; }
+
 
 /* Toggle Switch */
 .toggle-switch { position: relative; width: 44px; height: 24px; cursor: pointer; display: inline-block; }
@@ -5380,10 +5354,6 @@ input, select { font-family: inherit; }
         <a href="#" onclick="event.preventDefault();showPage('page-dashboard-profile')">Profile</a>
       </div>
       <div class="topnav-actions"><button class="mobile-menu-btn" onclick="openMobileNav()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
-        <button class="topnav-icon-btn" title="Notifications" onclick="toggleNotifDropdown(this)">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-          <span class="badge"></span>
-        </button>
         <button class="locale-btn" onclick="openLocaleDrawer()"><span class="flag">🇺🇸</span><span class="locale-label">EN</span></button>
         <div class="topnav-user" onclick="toggleUserDropdown(this)">
           <div class="topnav-avatar">A</div>
@@ -5641,10 +5611,6 @@ input, select { font-family: inherit; }
         <a href="#" onclick="event.preventDefault();showPage('page-dashboard-profile')">Profile</a>
       </div>
       <div class="topnav-actions"><button class="mobile-menu-btn" onclick="openMobileNav()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
-        <button class="topnav-icon-btn" title="Notifications" onclick="toggleNotifDropdown(this)">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-          <span class="badge"></span>
-        </button>
         <button class="locale-btn" onclick="openLocaleDrawer()"><span class="flag">🇺🇸</span><span class="locale-label">EN</span></button>
         <div class="topnav-user" onclick="toggleUserDropdown(this)">
           <div class="topnav-avatar">A</div>
@@ -5856,7 +5822,6 @@ input, select { font-family: inherit; }
         <a href="#" onclick="event.preventDefault();showPage('page-dashboard-profile')">Profile</a>
       </div>
       <div class="topnav-actions"><button class="mobile-menu-btn" onclick="openMobileNav()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
-        <button class="topnav-icon-btn" title="Notifications" onclick="toggleNotifDropdown(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><span class="badge"></span></button>
         <button class="locale-btn" onclick="openLocaleDrawer()"><span class="flag">🇺🇸</span><span class="locale-label">EN</span></button>
         <div class="topnav-user" onclick="toggleUserDropdown(this)"><div class="topnav-avatar">A</div><span class="name">Amy Chen</span></div>
       </div>
@@ -6079,7 +6044,6 @@ input, select { font-family: inherit; }
         <a href="#" onclick="event.preventDefault();showPage('page-dashboard-profile')">Profile</a>
       </div>
       <div class="topnav-actions"><button class="mobile-menu-btn" onclick="openMobileNav()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
-        <button class="topnav-icon-btn" onclick="toggleNotifDropdown(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><span class="badge"></span></button>
         <button class="locale-btn" onclick="openLocaleDrawer()"><span class="flag">🇺🇸</span><span class="locale-label">EN</span></button>
         <div class="topnav-user" onclick="toggleUserDropdown(this)"><div class="topnav-avatar">A</div><span class="name">Amy Chen</span></div>
       </div>
@@ -6183,7 +6147,6 @@ input, select { font-family: inherit; }
         <a href="#" onclick="event.preventDefault();showPage('page-dashboard-profile')">Profile</a>
       </div>
       <div class="topnav-actions"><button class="mobile-menu-btn" onclick="openMobileNav()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
-        <button class="topnav-icon-btn" onclick="toggleNotifDropdown(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><span class="badge"></span></button>
         <button class="locale-btn" onclick="openLocaleDrawer()"><span class="flag">🇺🇸</span><span class="locale-label">EN</span></button>
         <div class="topnav-user" onclick="toggleUserDropdown(this)"><div class="topnav-avatar">A</div><span class="name">Amy Chen</span></div>
       </div>
@@ -6354,7 +6317,6 @@ input, select { font-family: inherit; }
         <a href="#" onclick="event.preventDefault();showPage('page-dashboard-profile')">Profile</a>
       </div>
       <div class="topnav-actions"><button class="mobile-menu-btn" onclick="openMobileNav()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
-        <button class="topnav-icon-btn" onclick="toggleNotifDropdown(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><span class="badge"></span></button>
         <button class="locale-btn" onclick="openLocaleDrawer()"><span class="flag">🇺🇸</span><span class="locale-label">EN</span></button>
         <div class="topnav-user" onclick="toggleUserDropdown(this)"><div class="topnav-avatar">A</div><span class="name">Amy Chen</span></div>
       </div>
@@ -6523,7 +6485,6 @@ input, select { font-family: inherit; }
         <a href="#" onclick="event.preventDefault();showPage('page-dashboard-profile')">Profile</a>
       </div>
       <div class="topnav-actions"><button class="mobile-menu-btn" onclick="openMobileNav()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
-        <button class="topnav-icon-btn" onclick="toggleNotifDropdown(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><span class="badge"></span></button>
         <button class="locale-btn" onclick="openLocaleDrawer()"><span class="flag">🇺🇸</span><span class="locale-label">EN</span></button>
         <div class="topnav-user" onclick="toggleUserDropdown(this)"><div class="topnav-avatar">A</div><span class="name">Amy Chen</span></div>
       </div>
@@ -6715,7 +6676,6 @@ input, select { font-family: inherit; }
         <a href="#" class="active" onclick="event.preventDefault();showPage('page-dashboard-profile')">Profile</a>
       </div>
       <div class="topnav-actions"><button class="mobile-menu-btn" onclick="openMobileNav()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
-        <button class="topnav-icon-btn" onclick="toggleNotifDropdown(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><span class="badge"></span></button>
         <button class="locale-btn" onclick="openLocaleDrawer()"><span class="flag">🇺🇸</span><span class="locale-label">EN</span></button>
         <div class="topnav-user" onclick="toggleUserDropdown(this)"><div class="topnav-avatar">A</div><span class="name">Amy Chen</span></div>
       </div>
@@ -6763,14 +6723,7 @@ input, select { font-family: inherit; }
         </div>
         <span class="pm-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
       </div>
-      <div class="profile-menu-item" onclick="showPage('page-profile-notifications')">
-        <div class="pm-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
-        <div class="pm-content">
-          <div class="pm-title">Notification Settings</div>
-          <div class="pm-desc">Email, push, and order alerts</div>
-        </div>
-        <span class="pm-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
-      </div>
+
       <div class="profile-menu-item affiliate-only" onclick="showPage('page-upgrade-influencer')" style="display:none;background:linear-gradient(90deg,var(--emerald-50),#fff);border-left:3px solid var(--emerald-500);">
         <div class="pm-icon" style="background:var(--emerald-50);color:var(--emerald-600);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
         <div class="pm-content">
@@ -6836,489 +6789,6 @@ input, select { font-family: inherit; }
         <a href="#" class="active" onclick="event.preventDefault();showPage('page-dashboard-profile')">Profile</a>
       </div>
       <div class="topnav-actions"><button class="mobile-menu-btn" onclick="openMobileNav()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
-        <button class="topnav-icon-btn" onclick="toggleNotifDropdown(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></button>
-        <button class="locale-btn" onclick="openLocaleDrawer()"><span class="flag">🇺🇸</span><span class="locale-label">EN</span></button>
-        <div class="topnav-user" onclick="toggleUserDropdown(this)"><div class="topnav-avatar">A</div><span class="name">Amy Chen</span></div>
-      </div>
-    </div>
-  </nav>
-  <div class="dashboard-body" style="max-width:720px;width:100%;">
-    <div class="subpage-header">
-      <button class="subpage-back" onclick="showPage('page-dashboard-profile')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg> Back to Profile</button>
-      <h1>Payment & Tax Information</h1>
-    </div>
-
-    <!-- Progress -->
-    <div style="display:flex;gap:8px;margin-bottom:8px;">
-      <div id="tax-prog-1" style="flex:1;height:4px;border-radius:2px;background:var(--ui-primary);transition:background 300ms;"></div>
-      <div id="tax-prog-2" style="flex:1;height:4px;border-radius:2px;background:var(--neutral-200);transition:background 300ms;"></div>
-    </div>
-
-    <!-- ===== STEP 1: Identity & Classification ===== -->
-    <div id="tax-step-1">
-      <div class="collection-info-card" style="margin-bottom:24px;">
-        <h3 style="font-size:18px;font-weight:500;color:var(--neutral-950);margin-bottom:4px;">Step 1: Tax Identity</h3>
-        <p style="font-size:14px;color:var(--text-secondary);margin-bottom:24px;">Tell us about your tax residency and entity type so we can determine the correct form.</p>
-
-        <div style="margin-bottom:24px;">
-          <label style="display:block;font-size:12px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px;">Are you a US tax resident? <span style="color:var(--ui-primary);">*</span></label>
-          <div style="display:flex;gap:12px;" id="tax-residency">
-            <div class="tax-option-card" onclick="selectTaxOption(this,'residency','us')" style="flex:1;border:1.5px solid var(--border-default);border-radius:var(--radius-lg);padding:20px;cursor:pointer;transition:all var(--transition);text-align:center;">
-              <div style="font-size:28px;margin-bottom:8px;">🇺🇸</div>
-              <div style="font-size:15px;font-weight:500;color:var(--neutral-900);">Yes, US Person</div>
-              <div style="font-size:12px;color:var(--text-secondary);margin-top:4px;">US citizen, resident alien, or US entity</div>
-            </div>
-            <div class="tax-option-card" onclick="selectTaxOption(this,'residency','non-us')" style="flex:1;border:1.5px solid var(--border-default);border-radius:var(--radius-lg);padding:20px;cursor:pointer;transition:all var(--transition);text-align:center;">
-              <div style="font-size:28px;margin-bottom:8px;">🌍</div>
-              <div style="font-size:15px;font-weight:500;color:var(--neutral-900);">No, Non-US Person</div>
-              <div style="font-size:12px;color:var(--text-secondary);margin-top:4px;">Foreign individual or entity</div>
-            </div>
-          </div>
-        </div>
-
-        <div style="margin-bottom:24px;">
-          <label style="display:block;font-size:12px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px;">Tax Classification <span style="color:var(--ui-primary);">*</span></label>
-          <div style="display:flex;gap:12px;" id="tax-classification">
-            <div class="tax-option-card" onclick="selectTaxOption(this,'classification','individual')" style="flex:1;border:1.5px solid var(--border-default);border-radius:var(--radius-lg);padding:20px;cursor:pointer;transition:all var(--transition);text-align:center;">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--neutral-500)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 8px;display:block;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-              <div style="font-size:15px;font-weight:500;color:var(--neutral-900);">Individual</div>
-              <div style="font-size:12px;color:var(--text-secondary);margin-top:4px;">Sole proprietor / Single person</div>
-            </div>
-            <div class="tax-option-card" onclick="selectTaxOption(this,'classification','business')" style="flex:1;border:1.5px solid var(--border-default);border-radius:var(--radius-lg);padding:20px;cursor:pointer;transition:all var(--transition);text-align:center;">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--neutral-500)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 8px;display:block;"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-              <div style="font-size:15px;font-weight:500;color:var(--neutral-900);">Business</div>
-              <div style="font-size:12px;color:var(--text-secondary);margin-top:4px;">LLC, Corporation, Partnership</div>
-            </div>
-          </div>
-        </div>
-
-        <div id="tax-form-type" style="display:none;background:var(--neutral-50);border-radius:var(--radius-sm);padding:14px 18px;margin-bottom:24px;">
-          <span style="font-size:13px;color:var(--text-secondary);">Form required: </span>
-          <span id="tax-form-type-label" style="font-size:13px;font-weight:500;color:var(--neutral-950);"></span>
-        </div>
-      </div>
-
-      <button class="btn-primary large" id="tax-step1-next" disabled style="width:100%;" onclick="showTaxStep2()">Continue to Step 2 →</button>
-    </div>
-
-    <!-- ===== STEP 2: Form Fields ===== -->
-    <div id="tax-step-2" style="display:none;">
-      <div class="collection-info-card" style="margin-bottom:24px;">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
-          <div>
-            <h3 style="font-size:18px;font-weight:500;color:var(--neutral-950);margin-bottom:2px;">Step 2: <span id="tax-step2-title">W-9</span> Information</h3>
-            <p style="font-size:13px;color:var(--text-secondary);">All fields marked with * are required</p>
-          </div>
-          <button class="btn-ghost" onclick="showTaxStep1()">← Back to Step 1</button>
-        </div>
-
-        <div style="display:flex;flex-direction:column;gap:20px;">
-          <div class="collection-info-row">
-            <div class="collection-info-field" style="flex:1;">
-              <label>Legal Full Name <span style="color:var(--ui-primary);">*</span></label>
-              <input type="text" placeholder="As shown on your tax return">
-            </div>
-          </div>
-
-          <div class="collection-info-row" id="tax-business-name" style="display:none;">
-            <div class="collection-info-field" style="flex:1;">
-              <label>Business / Entity Name</label>
-              <input type="text" placeholder="If different from above">
-            </div>
-          </div>
-
-          <div class="collection-info-row" id="tax-classification-detail" style="display:none;">
-            <div class="collection-info-field" style="flex:1;">
-              <label>Federal Tax Classification <span style="color:var(--ui-primary);">*</span></label>
-              <select style="width:100%;height:44px;border:1px solid var(--neutral-300);border-radius:var(--radius-sm);padding:0 14px;font-size:14px;font-family:var(--font-main);color:var(--text-primary);">
-                <option>Select classification</option>
-                <option>Individual / Sole Proprietor</option>
-                <option>Single-member LLC</option>
-                <option>C Corporation</option>
-                <option>S Corporation</option>
-                <option>Partnership</option>
-                <option>Trust / Estate</option>
-                <option>LLC - C Corporation</option>
-                <option>LLC - S Corporation</option>
-                <option>LLC - Partnership</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="collection-info-row" id="tax-id-row">
-            <div class="collection-info-field" style="flex:1;">
-              <label><span id="tax-id-label">SSN</span> <span style="color:var(--ui-primary);">*</span></label>
-              <input type="text" id="tax-id-input" placeholder="XXX-XX-XXXX">
-            </div>
-          </div>
-
-          <div class="collection-info-row" id="tax-country-row" style="display:none;">
-            <div class="collection-info-field" style="flex:1;">
-              <label>Country of Citizenship <span style="color:var(--ui-primary);">*</span></label>
-              <select style="width:100%;height:44px;border:1px solid var(--neutral-300);border-radius:var(--radius-sm);padding:0 14px;font-size:14px;font-family:var(--font-main);color:var(--text-primary);">
-                <option>Select country</option>
-                <option>Canada</option>
-                <option>China</option>
-                <option>Japan</option>
-                <option>South Korea</option>
-                <option>United Kingdom</option>
-                <option>Other</option>
-              </select>
-            </div>
-          </div>
-
-          <div style="border-top:1px solid var(--border-default);padding-top:20px;">
-            <label style="display:block;font-size:12px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px;">Mailing Address <span style="color:var(--ui-primary);">*</span></label>
-            <div style="display:flex;flex-direction:column;gap:12px;">
-              <input type="text" placeholder="Street Address" style="width:100%;height:44px;border:1px solid var(--neutral-300);border-radius:var(--radius-sm);padding:0 14px;font-size:14px;font-family:var(--font-main);">
-              <input type="text" placeholder="Apt, Suite, Unit (optional)" style="width:100%;height:44px;border:1px solid var(--neutral-300);border-radius:var(--radius-sm);padding:0 14px;font-size:14px;font-family:var(--font-main);">
-              <div style="display:flex;gap:12px;">
-                <input type="text" placeholder="City" style="flex:2;height:44px;border:1px solid var(--neutral-300);border-radius:var(--radius-sm);padding:0 14px;font-size:14px;font-family:var(--font-main);">
-                <input type="text" placeholder="State / Province" style="flex:1;height:44px;border:1px solid var(--neutral-300);border-radius:var(--radius-sm);padding:0 14px;font-size:14px;font-family:var(--font-main);">
-                <input type="text" placeholder="ZIP / Postal" style="flex:1;height:44px;border:1px solid var(--neutral-300);border-radius:var(--radius-sm);padding:0 14px;font-size:14px;font-family:var(--font-main);">
-              </div>
-            </div>
-          </div>
-
-          <div style="border-top:1px solid var(--border-default);padding-top:20px;">
-            <label style="display:block;font-size:12px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px;">Electronic Signature <span style="color:var(--ui-primary);">*</span></label>
-            <p style="font-size:13px;color:var(--text-secondary);margin-bottom:12px;line-height:1.6;">Under penalties of perjury, I certify that the information provided is correct. By typing your name below, you are electronically signing this form.</p>
-            <div style="display:flex;gap:12px;">
-              <input type="text" placeholder="Type your full legal name" style="flex:2;height:44px;border:1px solid var(--neutral-300);border-radius:var(--radius-sm);padding:0 14px;font-size:14px;font-family:var(--font-main);">
-              <input type="text" value="April 14, 2026" readonly style="flex:1;height:44px;border:1px solid var(--neutral-200);border-radius:var(--radius-sm);padding:0 14px;font-size:14px;font-family:var(--font-main);background:var(--neutral-50);color:var(--text-secondary);">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div style="display:flex;gap:12px;">
-        <button class="btn-secondary large" style="flex:0;" onclick="showTaxStep1()">← Back</button>
-        <button class="btn-primary large" style="flex:1;" onclick="submitTaxForm()">Submit Tax Form</button>
-      </div>
-    </div>
-
-    <!-- Info -->
-    <div class="status-legend" style="margin-top:24px;">
-      <h4>Why is this required?</h4>
-      <div style="font-size:14px;color:var(--text-secondary);line-height:1.6;padding:4px 0;">US tax law requires Yami to collect tax identification information from all affiliates earning commission. Your information is securely stored and only used for tax reporting purposes (1099-NEC for US persons).</div>
-    </div>
-  </div>
-  <footer class="footer-minimal">
-    <div class="footer-minimal-inner">
-      <div class="footer-minimal-links">
-        <a href="#">Creator Terms</a>
-        <a href="#">Privacy</a>
-        <a href="#">Help</a>
-        <a href="#">Contact Us</a>
-      </div>
-      <div class="footer-minimal-copyright">© 2026 Yami Inc. All rights reserved.</div>
-    </div>
-  </footer>
-</div>
-
-<!-- ==================== PAGE: SOCIAL ACCOUNTS ==================== -->
-<div class="page dashboard-page" id="page-profile-social">
-  <nav class="topnav">
-    <div class="container">
-      <div class="topnav-logo">Yami<span class="red-dot">.</span> <span style="font-weight:500;font-size:14px;color:var(--text-secondary);margin-left:6px;">Creators</span></div>
-      <div class="topnav-links" style="margin-left:24px;">
-        <a href="#" onclick="event.preventDefault();showPage('page-dashboard-home')">Dashboard</a>
-        <a href="#" onclick="event.preventDefault();showPage('page-dashboard-share')">Share</a>
-        <a href="#" onclick="event.preventDefault();showPage('page-dashboard-report')">Report</a>
-        <a href="#" onclick="event.preventDefault();showPage('page-dashboard-wallet')">Wallet</a>
-        <a href="#" class="active" onclick="event.preventDefault();showPage('page-dashboard-profile')">Profile</a>
-      </div>
-      <div class="topnav-actions"><button class="mobile-menu-btn" onclick="openMobileNav()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
-        <button class="topnav-icon-btn" onclick="toggleNotifDropdown(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></button>
-        <button class="locale-btn" onclick="openLocaleDrawer()"><span class="flag">🇺🇸</span><span class="locale-label">EN</span></button>
-        <div class="topnav-user" onclick="toggleUserDropdown(this)"><div class="topnav-avatar">A</div><span class="name">Amy Chen</span></div>
-      </div>
-    </div>
-  </nav>
-  <div class="dashboard-body">
-    <div class="subpage-header">
-      <button class="subpage-back" onclick="showPage('page-dashboard-profile')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg> Back to Profile</button>
-      <h1>Social Accounts</h1>
-      <div class="subpage-header-actions"><button class="btn-primary" onclick="openConnectPlatformModal()">+ Connect Platform</button></div>
-    </div>
-    <div id="social-accounts-list">
-    <div class="collection-info-card" style="margin-bottom:12px;" id="social-ig">
-      <div style="display:flex;align-items:center;gap:16px;">
-        <div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(45deg,#FEDA75,#FA7E1E 25%,#D62976 50%,#962FBF 75%,#4F5BD5);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63a5.86 5.86 0 0 0-2.13 1.39 5.86 5.86 0 0 0-1.39 2.13C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.73 1.46 1.39 2.13.66.66 1.34 1.08 2.13 1.39.76.3 1.64.5 2.91.56 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.86 5.86 0 0 0 2.13-1.39 5.86 5.86 0 0 0 1.39-2.13c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.86 5.86 0 0 0-1.39-2.13A5.86 5.86 0 0 0 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg></div>
-        <div style="flex:1;min-width:0;">
-          <h4 style="font-size:15px;font-weight:500;color:var(--neutral-900);">Instagram</h4>
-          <div style="font-size:13px;color:var(--text-secondary);display:flex;gap:12px;margin-top:2px;"><span style="color:var(--emerald-600);font-weight:500;">Connected</span><span>2.4K followers</span></div>
-        </div>
-        <button class="btn-ghost" style="flex-shrink:0;" onclick="toggleSocialEdit('ig')">Edit</button>
-      </div>
-      <div id="social-edit-ig" style="display:none;margin-top:16px;padding-top:16px;border-top:1px solid var(--border-default);">
-        <div style="display:flex;gap:12px;margin-bottom:12px;">
-          <div class="field-group" style="flex:2;"><label>Instagram Username</label><input type="text" value="@amychen.eats"></div>
-          <div class="field-group small influencer-only"><label>Followers</label><select><option>Select</option><option>500–1K</option><option selected>1K–3K</option><option>3K–5K</option><option>5K+</option></select></div>
-        </div>
-        <div style="display:flex;gap:8px;justify-content:flex-end;">
-          <button class="btn-ghost" onclick="toggleSocialEdit('ig')" style="font-size:13px;">Cancel</button>
-          <button class="btn-primary" style="height:36px;font-size:13px;padding:0 20px;" onclick="toggleSocialEdit('ig');showToast('\u2713 Instagram updated')">Save</button>
-        </div>
-      </div>
-    </div>
-    <div class="collection-info-card" style="margin-bottom:12px;" id="social-tt">
-      <div style="display:flex;align-items:center;gap:16px;">
-        <div style="width:48px;height:48px;border-radius:12px;background:#000;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43V8.65a8.16 8.16 0 0 0 4.77 1.52V6.7a4.79 4.79 0 0 1-1.84-.01z"/></svg></div>
-        <div style="flex:1;min-width:0;">
-          <h4 style="font-size:15px;font-weight:500;color:var(--neutral-900);">TikTok</h4>
-          <div style="font-size:13px;color:var(--text-secondary);display:flex;gap:12px;margin-top:2px;"><span style="color:var(--emerald-600);font-weight:500;">Connected</span><span>5.1K followers</span></div>
-        </div>
-        <button class="btn-ghost" style="flex-shrink:0;" onclick="toggleSocialEdit('tt')">Edit</button>
-      </div>
-      <div id="social-edit-tt" style="display:none;margin-top:16px;padding-top:16px;border-top:1px solid var(--border-default);">
-        <div style="display:flex;gap:12px;margin-bottom:12px;">
-          <div class="field-group" style="flex:2;"><label>TikTok Username</label><input type="text" value="@amychen"></div>
-          <div class="field-group small influencer-only"><label>Followers</label><select><option>Select</option><option>500–1K</option><option>1K–3K</option><option>3K–5K</option><option selected>5K+</option></select></div>
-        </div>
-        <div style="display:flex;gap:8px;justify-content:flex-end;">
-          <button class="btn-ghost" onclick="toggleSocialEdit('tt')" style="font-size:13px;">Cancel</button>
-          <button class="btn-primary" style="height:36px;font-size:13px;padding:0 20px;" onclick="toggleSocialEdit('tt');showToast('\u2713 TikTok updated')">Save</button>
-        </div>
-      </div>
-    </div>
-    <div class="collection-info-card" style="margin-bottom:12px;" id="social-yt">
-      <div style="display:flex;align-items:center;gap:16px;">
-        <div style="width:48px;height:48px;border-radius:12px;background:#FF0000;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M23.5 6.2a3 3 0 0 0-2.12-2.12C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3 3 0 0 0 .5 6.18C0 8.07 0 12 0 12s0 3.93.5 5.82a3 3 0 0 0 2.12 2.12c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3 3 0 0 0 2.12-2.12C24 15.93 24 12 24 12s0-3.93-.5-5.8zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/></svg></div>
-        <div style="flex:1;min-width:0;">
-          <h4 style="font-size:15px;font-weight:500;color:var(--neutral-900);">YouTube</h4>
-          <div style="font-size:13px;color:var(--text-secondary);display:flex;gap:12px;margin-top:2px;"><span style="color:var(--emerald-600);font-weight:500;">Connected</span><span>890 subscribers</span></div>
-        </div>
-        <button class="btn-ghost" style="flex-shrink:0;" onclick="toggleSocialEdit('yt')">Edit</button>
-      </div>
-      <div id="social-edit-yt" style="display:none;margin-top:16px;padding-top:16px;border-top:1px solid var(--border-default);">
-        <div style="display:flex;gap:12px;margin-bottom:12px;">
-          <div class="field-group" style="flex:2;"><label>Channel URL</label><input type="text" value="youtube.com/@amycheneats"></div>
-          <div class="field-group small influencer-only"><label>Subscribers</label><select><option>Select</option><option selected>500–1K</option><option>1K–3K</option><option>3K–5K</option><option>5K+</option></select></div>
-        </div>
-        <div style="display:flex;gap:8px;justify-content:flex-end;">
-          <button class="btn-ghost" onclick="toggleSocialEdit('yt')" style="font-size:13px;">Cancel</button>
-          <button class="btn-primary" style="height:36px;font-size:13px;padding:0 20px;" onclick="toggleSocialEdit('yt');showToast('\u2713 YouTube updated')">Save</button>
-        </div>
-      </div>
-    </div>
-    <div class="collection-info-card" style="margin-bottom:12px;" id="social-red">
-      <div style="display:flex;align-items:center;gap:16px;">
-        <div style="width:48px;height:48px;border-radius:12px;background:#E60023;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.08 3.25 9.4 7.78 10.97-.11-.94-.2-2.38.04-3.41.22-.93 1.4-5.93 1.4-5.93s-.36-.71-.36-1.77c0-1.66.96-2.9 2.16-2.9 1.02 0 1.51.77 1.51 1.68 0 1.03-.65 2.56-.99 3.98-.28 1.19.6 2.16 1.77 2.16 2.13 0 3.77-2.25 3.77-5.49 0-2.87-2.06-4.87-5.01-4.87-3.41 0-5.42 2.56-5.42 5.2 0 1.03.4 2.13.89 2.73.1.12.11.22.08.34-.09.37-.29 1.19-.33 1.36-.05.22-.18.27-.4.16-1.49-.69-2.42-2.87-2.42-4.62 0-3.76 2.73-7.21 7.88-7.21 4.14 0 7.35 2.95 7.35 6.88 0 4.11-2.59 7.42-6.19 7.42-1.21 0-2.35-.63-2.74-1.37l-.74 2.84c-.27 1.04-1 2.35-1.49 3.14C9.57 23.81 10.76 24 12 24c6.63 0 12-5.37 12-12S18.63 0 12 0z"/></svg></div>
-        <div style="flex:1;min-width:0;">
-          <h4 style="font-size:15px;font-weight:500;color:var(--neutral-900);">Pinterest</h4>
-          <div style="font-size:13px;color:var(--text-secondary);display:flex;gap:12px;margin-top:2px;"><span style="color:var(--emerald-600);font-weight:500;">Connected</span><span>1.8K followers</span></div>
-        </div>
-        <button class="btn-ghost" style="flex-shrink:0;" onclick="toggleSocialEdit('red')">Edit</button>
-      </div>
-      <div id="social-edit-red" style="display:none;margin-top:16px;padding-top:16px;border-top:1px solid var(--border-default);">
-        <div style="display:flex;gap:12px;margin-bottom:12px;">
-          <div class="field-group" style="flex:2;"><label>Pinterest Profile URL</label><input type="text" value="pinterest.com/amychen_yami"></div>
-          <div class="field-group small influencer-only"><label>Followers</label><select><option>Select</option><option selected>1K–3K</option><option>3K–5K</option><option>5K+</option></select></div>
-        </div>
-        <div style="display:flex;gap:8px;justify-content:flex-end;">
-          <button class="btn-ghost" onclick="toggleSocialEdit('red')" style="font-size:13px;">Cancel</button>
-          <button class="btn-primary" style="height:36px;font-size:13px;padding:0 20px;" onclick="toggleSocialEdit('red');showToast('\u2713 Pinterest updated')">Save</button>
-        </div>
-      </div>
-    </div>
-    </div>
-  </div>
-  <footer class="footer-minimal">
-    <div class="footer-minimal-inner">
-      <div class="footer-minimal-links">
-        <a href="#">Creator Terms</a>
-        <a href="#">Privacy</a>
-        <a href="#">Help</a>
-        <a href="#">Contact Us</a>
-      </div>
-      <div class="footer-minimal-copyright">© 2026 Yami Inc. All rights reserved.</div>
-    </div>
-  </footer>
-</div>
-
-<!-- ==================== CONNECT PLATFORM MODAL ==================== -->
-<div id="connect-platform-modal" style="display:none;position:fixed;inset:0;z-index:1200;background:rgba(0,0,0,0.5);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:24px;">
-  <div style="background:#fff;border-radius:var(--radius-lg);max-width:560px;width:100%;max-height:85vh;overflow-y:auto;padding:32px;box-shadow:var(--shadow-floating);">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-      <h3 style="font-size:20px;font-weight:500;color:var(--neutral-950);">Connect a Platform</h3>
-      <button class="topnav-icon-btn" onclick="closeConnectPlatformModal()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
-    </div>
-    <p style="font-size:14px;color:var(--text-secondary);margin-bottom:24px;">Select a platform and enter your profile info.</p>
-
-    <div class="platform-cards" id="connect-platform-cards">
-      <div class="platform-card" style="opacity:0.5;pointer-events:none;">
-        <div class="platform-card-header">
-          <div class="platform-card-icon ig"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63a5.86 5.86 0 0 0-2.13 1.39 5.86 5.86 0 0 0-1.39 2.13C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.73 1.46 1.39 2.13.66.66 1.34 1.08 2.13 1.39.76.3 1.64.5 2.91.56 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.86 5.86 0 0 0 2.13-1.39 5.86 5.86 0 0 0 1.39-2.13c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.86 5.86 0 0 0-1.39-2.13A5.86 5.86 0 0 0 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg></div>
-          <div class="platform-card-name">Instagram <span style="font-size:12px;color:var(--emerald-600);font-weight:500;margin-left:6px;">Connected</span></div>
-          <div class="platform-card-check" style="border-color:var(--emerald-500);background:var(--emerald-500);color:#fff;">✓</div>
-        </div>
-      </div>
-
-      <div class="platform-card" style="opacity:0.5;pointer-events:none;">
-        <div class="platform-card-header">
-          <div class="platform-card-icon tt"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43V8.65a8.16 8.16 0 0 0 4.77 1.52V6.7a4.79 4.79 0 0 1-1.84-.01z"/></svg></div>
-          <div class="platform-card-name">TikTok <span style="font-size:12px;color:var(--emerald-600);font-weight:500;margin-left:6px;">Connected</span></div>
-          <div class="platform-card-check" style="border-color:var(--emerald-500);background:var(--emerald-500);color:#fff;">✓</div>
-        </div>
-      </div>
-
-      <div class="platform-card" style="opacity:0.5;pointer-events:none;">
-        <div class="platform-card-header">
-          <div class="platform-card-icon yt"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.12-2.12C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3 3 0 0 0 .5 6.18C0 8.07 0 12 0 12s0 3.93.5 5.82a3 3 0 0 0 2.12 2.12c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3 3 0 0 0 2.12-2.12C24 15.93 24 12 24 12s0-3.93-.5-5.8zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/></svg></div>
-          <div class="platform-card-name">YouTube <span style="font-size:12px;color:var(--emerald-600);font-weight:500;margin-left:6px;">Connected</span></div>
-          <div class="platform-card-check" style="border-color:var(--emerald-500);background:var(--emerald-500);color:#fff;">✓</div>
-        </div>
-      </div>
-
-      <div class="platform-card" style="opacity:0.5;pointer-events:none;">
-        <div class="platform-card-header">
-          <div class="platform-card-icon pin" style="background:#E60023;"><svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.08 3.25 9.4 7.78 10.97-.11-.94-.2-2.38.04-3.41.22-.93 1.4-5.93 1.4-5.93s-.36-.71-.36-1.77c0-1.66.96-2.9 2.16-2.9 1.02 0 1.51.77 1.51 1.68 0 1.03-.65 2.56-.99 3.98-.28 1.19.6 2.16 1.77 2.16 2.13 0 3.77-2.25 3.77-5.49 0-2.87-2.06-4.87-5.01-4.87-3.41 0-5.42 2.56-5.42 5.2 0 1.03.4 2.13.89 2.73.1.12.11.22.08.34-.09.37-.29 1.19-.33 1.36-.05.22-.18.27-.4.16-1.49-.69-2.42-2.87-2.42-4.62 0-3.76 2.73-7.21 7.88-7.21 4.14 0 7.35 2.95 7.35 6.88 0 4.11-2.59 7.42-6.19 7.42-1.21 0-2.35-.63-2.74-1.37l-.74 2.84c-.27 1.04-1 2.35-1.49 3.14C9.57 23.81 10.76 24 12 24c6.63 0 12-5.37 12-12S18.63 0 12 0z" fill="#fff"/></svg></div>
-          <div class="platform-card-name">Pinterest <span style="font-size:12px;color:var(--emerald-600);font-weight:500;margin-left:6px;">Connected</span></div>
-          <div class="platform-card-check" style="border-color:var(--emerald-500);background:var(--emerald-500);color:#fff;">✓</div>
-        </div>
-      </div>
-
-      <div class="platform-card" onclick="togglePlatform(this);validateConnectPlatform()">
-        <div class="platform-card-header">
-          <div class="platform-card-icon tw"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></div>
-          <div class="platform-card-name">X / Twitter</div>
-          <div class="platform-card-check">✓</div>
-        </div>
-        <div class="platform-card-expand">
-          <div class="platform-card-fields">
-            <div class="field-group"><label>Profile URL or Username</label><input type="text" placeholder="@yourusername" oninput="validateConnectPlatform()"></div>
-            <div class="field-group small influencer-only"><label>Followers</label><select onchange="validateConnectPlatform()"><option value="">Select</option><option>500–1K</option><option>1K–3K</option><option>3K–5K</option><option>5K+</option></select></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="platform-card" onclick="togglePlatform(this);validateConnectPlatform()">
-        <div class="platform-card-header">
-          <div class="platform-card-icon" style="background:var(--emerald-600);"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8.5 11.5c1.38 0 2.5-1.12 2.5-2.5S9.88 6.5 8.5 6.5 6 7.62 6 9s1.12 2.5 2.5 2.5zm7 0c1.38 0 2.5-1.12 2.5-2.5S16.88 6.5 15.5 6.5 13 7.62 13 9s1.12 2.5 2.5 2.5zM12 14c-2.33 0-7 1.17-7 3.5V19h14v-1.5c0-2.33-4.67-3.5-7-3.5z"/></svg></div>
-          <div class="platform-card-name">WeChat</div>
-          <div class="platform-card-check">✓</div>
-        </div>
-        <div class="platform-card-expand">
-          <div class="platform-card-fields">
-            <div class="field-group"><label>WeChat ID</label><input type="text" placeholder="Your WeChat ID" oninput="validateConnectPlatform()"></div>
-            <div class="field-group small influencer-only"><label>Followers</label><select onchange="validateConnectPlatform()"><option value="">Select</option><option>500–1K</option><option>1K–3K</option><option>3K–5K</option><option>5K+</option></select></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <button class="btn-primary large" id="connect-platform-submit" disabled style="width:100%;margin-top:20px;" onclick="submitConnectPlatform()">Connect Platform</button>
-  </div>
-</div>
-
-<!-- ==================== PAGE: CATEGORY PREFERENCES ==================== -->
-<div class="page dashboard-page" id="page-profile-categories">
-  <nav class="topnav">
-    <div class="container">
-      <div class="topnav-logo">Yami<span class="red-dot">.</span> <span style="font-weight:500;font-size:14px;color:var(--text-secondary);margin-left:6px;">Creators</span></div>
-      <div class="topnav-links" style="margin-left:24px;">
-        <a href="#" onclick="event.preventDefault();showPage('page-dashboard-home')">Dashboard</a>
-        <a href="#" onclick="event.preventDefault();showPage('page-dashboard-share')">Share</a>
-        <a href="#" onclick="event.preventDefault();showPage('page-dashboard-report')">Report</a>
-        <a href="#" onclick="event.preventDefault();showPage('page-dashboard-wallet')">Wallet</a>
-        <a href="#" class="active" onclick="event.preventDefault();showPage('page-dashboard-profile')">Profile</a>
-      </div>
-      <div class="topnav-actions"><button class="mobile-menu-btn" onclick="openMobileNav()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
-        <button class="topnav-icon-btn" onclick="toggleNotifDropdown(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></button>
-        <button class="locale-btn" onclick="openLocaleDrawer()"><span class="flag">🇺🇸</span><span class="locale-label">EN</span></button>
-        <div class="topnav-user" onclick="toggleUserDropdown(this)"><div class="topnav-avatar">A</div><span class="name">Amy Chen</span></div>
-      </div>
-    </div>
-  </nav>
-  <div class="dashboard-body">
-    <div class="subpage-header">
-      <button class="subpage-back" onclick="showPage('page-dashboard-profile')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg> Back to Profile</button>
-      <h1>Category Preferences</h1>
-      <div class="subpage-header-actions"><button class="btn-primary" onclick="alert('Preferences saved!')">Save Changes</button></div>
-    </div>
-    <p style="font-size:15px;color:var(--text-secondary);margin-bottom:24px;line-height:1.6;">Select the categories you love sharing about. We'll use these to recommend the best products for you.</p>
-    <div class="category-tags">
-      <div class="cat-tag selected" onclick="toggleTag(this)">&#x1F35C; Snacks &amp; Noodles</div>
-      <div class="cat-tag selected" onclick="toggleTag(this)">&#x1F484; K-Beauty &amp; Skincare</div>
-      <div class="cat-tag selected" onclick="toggleTag(this)">&#x1F375; Tea &amp; Beverages</div>
-      <div class="cat-tag" onclick="toggleTag(this)">&#x1F370; Sweets &amp; Desserts</div>
-      <div class="cat-tag" onclick="toggleTag(this)">&#x1F3E0; Home &amp; Living</div>
-      <div class="cat-tag" onclick="toggleTag(this)">&#x1F3AE; Anime &amp; Pop Culture</div>
-      <div class="cat-tag" onclick="toggleTag(this)">&#x1F9F4; Health &amp; Wellness</div>
-      <div class="cat-tag" onclick="toggleTag(this)">&#x1F372; Cooking &amp; Pantry</div>
-    </div>
-  </div>
-  <footer class="footer-minimal">
-    <div class="footer-minimal-inner">
-      <div class="footer-minimal-links">
-        <a href="#">Creator Terms</a>
-        <a href="#">Privacy</a>
-        <a href="#">Help</a>
-        <a href="#">Contact Us</a>
-      </div>
-      <div class="footer-minimal-copyright">© 2026 Yami Inc. All rights reserved.</div>
-    </div>
-  </footer>
-</div>
-
-<!-- ==================== PAGE: NOTIFICATION SETTINGS ==================== -->
-<div class="page dashboard-page" id="page-profile-notifications">
-  <nav class="topnav">
-    <div class="container">
-      <div class="topnav-logo">Yami<span class="red-dot">.</span> <span style="font-weight:500;font-size:14px;color:var(--text-secondary);margin-left:6px;">Creators</span></div>
-      <div class="topnav-links" style="margin-left:24px;">
-        <a href="#" onclick="event.preventDefault();showPage('page-dashboard-home')">Dashboard</a>
-        <a href="#" onclick="event.preventDefault();showPage('page-dashboard-share')">Share</a>
-        <a href="#" onclick="event.preventDefault();showPage('page-dashboard-report')">Report</a>
-        <a href="#" onclick="event.preventDefault();showPage('page-dashboard-wallet')">Wallet</a>
-        <a href="#" class="active" onclick="event.preventDefault();showPage('page-dashboard-profile')">Profile</a>
-      </div>
-      <div class="topnav-actions"><button class="mobile-menu-btn" onclick="openMobileNav()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
-        <button class="topnav-icon-btn" onclick="toggleNotifDropdown(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></button>
-        <button class="locale-btn" onclick="openLocaleDrawer()"><span class="flag">🇺🇸</span><span class="locale-label">EN</span></button>
-        <div class="topnav-user" onclick="toggleUserDropdown(this)"><div class="topnav-avatar">A</div><span class="name">Amy Chen</span></div>
-      </div>
-    </div>
-  </nav>
-  <div class="dashboard-body">
-    <div class="subpage-header">
-      <button class="subpage-back" onclick="showPage('page-dashboard-profile')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg> Back to Profile</button>
-      <h1>Notification Settings</h1>
-      <div class="subpage-header-actions"><button class="btn-primary" onclick="showToast('\u2713 Notification settings saved!')">Save Changes</button></div>
-    </div>
-    <div class="collection-info-card" style="margin-bottom:12px;"><div style="display:flex;justify-content:space-between;align-items:center;"><div><h4 style="font-size:15px;font-weight:500;color:var(--neutral-900);">New order notification</h4><p style="font-size:13px;color:var(--text-secondary);margin-top:2px;">Get notified when someone makes a purchase using your code</p></div><label class="toggle-switch"><input type="checkbox" checked onchange="showToast(this.checked?'Enabled: New order notification':'Disabled: New order notification')"><span class="track"></span><span class="knob"></span></label></div></div>
-    <div class="collection-info-card" style="margin-bottom:12px;"><div style="display:flex;justify-content:space-between;align-items:center;"><div><h4 style="font-size:15px;font-weight:500;color:var(--neutral-900);">Monthly earnings summary</h4><p style="font-size:13px;color:var(--text-secondary);margin-top:2px;">Monthly email with your commission summary and payout info</p></div><label class="toggle-switch"><input type="checkbox" checked onchange="showToast(this.checked?'Enabled: Monthly earnings summary':'Disabled: Monthly earnings summary')"><span class="track"></span><span class="knob"></span></label></div></div>
-    <div class="collection-info-card" style="margin-bottom:12px;"><div style="display:flex;justify-content:space-between;align-items:center;"><div><h4 style="font-size:15px;font-weight:500;color:var(--neutral-900);">New product recommendations</h4><p style="font-size:13px;color:var(--text-secondary);margin-top:2px;">Weekly email with trending products to share</p></div><label class="toggle-switch"><input type="checkbox" onchange="showToast(this.checked?'Enabled: New product recommendations':'Disabled: New product recommendations')"><span class="track"></span><span class="knob"></span></label></div></div>
-    <div class="collection-info-card" style="margin-bottom:12px;"><div style="display:flex;justify-content:space-between;align-items:center;"><div><h4 style="font-size:15px;font-weight:500;color:var(--neutral-900);">Free sample alerts</h4><p style="font-size:13px;color:var(--text-secondary);margin-top:2px;">Get notified when new free samples become available</p></div><label class="toggle-switch"><input type="checkbox" checked onchange="showToast(this.checked?'Enabled: Free sample alerts':'Disabled: Free sample alerts')"><span class="track"></span><span class="knob"></span></label></div></div>
-  </div>
-  <footer class="footer-minimal">
-    <div class="footer-minimal-inner">
-      <div class="footer-minimal-links">
-        <a href="#">Creator Terms</a>
-        <a href="#">Privacy</a>
-        <a href="#">Help</a>
-        <a href="#">Contact Us</a>
-      </div>
-      <div class="footer-minimal-copyright">© 2026 Yami Inc. All rights reserved.</div>
-    </div>
-  </footer>
-</div>
-
-<!-- ==================== PAGE: SAMPLE HISTORY ==================== -->
-<div class="page dashboard-page" id="page-sample-history">
-  <nav class="topnav">
-    <div class="container">
-      <div class="topnav-logo">Yami<span class="red-dot">.</span> <span style="font-weight:500;font-size:14px;color:var(--text-secondary);margin-left:6px;">Creators</span></div>
-      <div class="topnav-links" style="margin-left:24px;">
-        <a href="#" onclick="event.preventDefault();showPage('page-dashboard-home')">Dashboard</a>
-        <a href="#" onclick="event.preventDefault();showPage('page-dashboard-share')">Share</a>
-        <a href="#" onclick="event.preventDefault();showPage('page-dashboard-report')">Report</a>
-        <a href="#" onclick="event.preventDefault();showPage('page-dashboard-wallet')">Wallet</a>
-        <a href="#" class="active" onclick="event.preventDefault();showPage('page-dashboard-profile')">Profile</a>
-      </div>
-      <div class="topnav-actions"><button class="mobile-menu-btn" onclick="openMobileNav()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
-        <button class="topnav-icon-btn" onclick="toggleNotifDropdown(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><span class="badge"></span></button>
         <button class="locale-btn" onclick="openLocaleDrawer()"><span class="flag">🇺🇸</span><span class="locale-label">EN</span></button>
         <div class="topnav-user" onclick="toggleUserDropdown(this)"><div class="topnav-avatar">A</div><span class="name">Amy Chen</span></div>
       </div>
@@ -7466,7 +6936,6 @@ input, select { font-family: inherit; }
         <a href="#" class="active" onclick="event.preventDefault();showPage('page-dashboard-profile')">Profile</a>
       </div>
       <div class="topnav-actions">
-        <button class="topnav-icon-btn" onclick="toggleNotifDropdown(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><span class="badge"></span></button>
         <button class="locale-btn" onclick="openLocaleDrawer()"><span class="flag">🇺🇸</span><span class="locale-label">EN</span></button>
         <div class="topnav-user" onclick="toggleUserDropdown(this)"><div class="topnav-avatar">A</div><span class="name">Amy Chen</span></div>
       </div>
@@ -7605,7 +7074,6 @@ input, select { font-family: inherit; }
         <a href="#" class="active" onclick="event.preventDefault();showPage('page-dashboard-profile')">Profile</a>
       </div>
       <div class="topnav-actions"><button class="mobile-menu-btn" onclick="openMobileNav()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
-        <button class="topnav-icon-btn" onclick="toggleNotifDropdown(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></button>
         <button class="locale-btn" onclick="openLocaleDrawer()"><span class="flag">🇺🇸</span><span class="locale-label">EN</span></button>
         <div class="topnav-user" onclick="toggleUserDropdown(this)"><div class="topnav-avatar">A</div><span class="name">Amy Chen</span></div>
       </div>
@@ -7654,7 +7122,6 @@ input, select { font-family: inherit; }
         <a href="#" class="active" onclick="event.preventDefault();showPage('page-dashboard-profile')">Profile</a>
       </div>
       <div class="topnav-actions"><button class="mobile-menu-btn" onclick="openMobileNav()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
-        <button class="topnav-icon-btn" onclick="toggleNotifDropdown(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></button>
         <button class="locale-btn" onclick="openLocaleDrawer()"><span class="flag">🇺🇸</span><span class="locale-label">EN</span></button>
         <div class="topnav-user" onclick="toggleUserDropdown(this)"><div class="topnav-avatar">A</div><span class="name">Amy Chen</span></div>
       </div>
@@ -7720,7 +7187,6 @@ input, select { font-family: inherit; }
       </div>
       <div class="topnav-actions">
         <button class="mobile-menu-btn" onclick="openMobileNav()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
-        <button class="topnav-icon-btn" onclick="toggleNotifDropdown(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></button>
         <button class="locale-btn" onclick="openLocaleDrawer()"><span class="flag">🇺🇸</span><span class="locale-label">EN</span></button>
         <div class="topnav-user" onclick="toggleUserDropdown(this)"><div class="topnav-avatar">A</div><span class="name">Amy Chen</span></div>
       </div>
@@ -8752,31 +8218,10 @@ if (atcModal) {
 }
 
 // ===== Dropdowns (Notifications + User Menu) =====
-window.toggleNotifDropdown = function(btn) {
-  var dd = document.getElementById('notif-dropdown');
-  var overlay = document.getElementById('dropdown-overlay');
-  var userDd = document.getElementById('user-dropdown');
-  userDd.classList.remove('active');
-  var isOpen = dd.classList.contains('active');
-  if (isOpen) {
-    dd.classList.remove('active');
-    overlay.classList.remove('active');
-  } else {
-    // Position relative to the button
-    var rect = btn.getBoundingClientRect();
-    dd.style.position = 'fixed';
-    dd.style.top = (rect.bottom + 8) + 'px';
-    dd.style.right = (window.innerWidth - rect.right) + 'px';
-    dd.classList.add('active');
-    overlay.classList.add('active');
-  }
-};
 
 window.toggleUserDropdown = function(btn) {
   var dd = document.getElementById('user-dropdown');
   var overlay = document.getElementById('dropdown-overlay');
-  var notifDd = document.getElementById('notif-dropdown');
-  notifDd.classList.remove('active');
   var isOpen = dd.classList.contains('active');
   if (isOpen) {
     dd.classList.remove('active');
@@ -8792,27 +8237,16 @@ window.toggleUserDropdown = function(btn) {
 };
 
 window.closeAllDropdowns = function() {
-  document.getElementById('notif-dropdown').classList.remove('active');
   document.getElementById('user-dropdown').classList.remove('active');
   document.getElementById('dropdown-overlay').classList.remove('active');
 };
 
-window.notifClick = function(item, pageId) {
-  item.classList.remove('unread');
-  closeAllDropdowns();
-  showPage(pageId);
-};
 
 window.dropdownNav = function(pageId) {
   closeAllDropdowns();
   showPage(pageId);
 };
 
-window.markAllRead = function() {
-  var items = document.querySelectorAll('.notif-item.unread');
-  for (var i = 0; i < items.length; i++) items[i].classList.remove('unread');
-  showToast('\u2713 All notifications marked as read');
-};
 
 // ===== Social Accounts =====
 window.toggleSocialEdit = function(platform) {
@@ -9164,65 +8598,8 @@ document.getElementById('mobile-nav').addEventListener('click', function(e) {
 <!-- ==================== TOAST ==================== -->
 <div id="toast" style="display:none;position:fixed;bottom:32px;left:50%;transform:translateX(-50%);background:var(--neutral-950);color:#fff;padding:14px 28px;border-radius:var(--radius-lg);font-size:14px;font-weight:500;z-index:3000;box-shadow:var(--shadow-floating);transition:opacity 300ms ease;opacity:0;"></div>
 
-<!-- ==================== NOTIFICATION DROPDOWN ==================== -->
+<!-- Dropdown overlay -->
 <div class="dropdown-overlay" id="dropdown-overlay" onclick="closeAllDropdowns()"></div>
-<div class="nav-dropdown notif-dropdown" id="notif-dropdown">
-  <div class="nav-dropdown-header">
-    <span class="dd-name">Notifications</span>
-    <span class="mark-read" onclick="markAllRead()">Mark all read</span>
-  </div>
-  <div class="notif-list">
-    <div class="notif-item unread" onclick="notifClick(this,'page-dashboard-wallet')">
-      <div class="notif-icon order">🎉</div>
-      <div class="notif-content">
-        <div class="notif-text"><strong>New order!</strong> Someone used your code — you earned <strong>$2.40</strong></div>
-        <div class="notif-time">2 minutes ago</div>
-      </div>
-    </div>
-    <div class="notif-item unread" onclick="notifClick(this,'page-dashboard-wallet')">
-      <div class="notif-icon payout">💰</div>
-      <div class="notif-content">
-        <div class="notif-text"><strong>March commission confirmed:</strong> $412.80 has been locked in</div>
-        <div class="notif-time">1 hour ago</div>
-      </div>
-    </div>
-    <div class="notif-item unread" onclick="notifClick(this,'page-dashboard-home')">
-      <div class="notif-icon sample">📦</div>
-      <div class="notif-content">
-        <div class="notif-text">Your <strong>free sample order</strong> has shipped! Track it in your email.</div>
-        <div class="notif-time">3 hours ago</div>
-      </div>
-    </div>
-    <div class="notif-item" onclick="notifClick(this,'page-profile-tax')">
-      <div class="notif-icon tax">📄</div>
-      <div class="notif-content">
-        <div class="notif-text"><strong>Reminder:</strong> Complete your tax form to receive payouts</div>
-        <div class="notif-time">Yesterday</div>
-      </div>
-    </div>
-    <div class="notif-item" onclick="notifClick(this,'page-dashboard-share')">
-      <div class="notif-icon promo">⭐</div>
-      <div class="notif-content">
-        <div class="notif-text"><strong>New trending product!</strong> COSRX Snail Mucin is converting at 12%</div>
-        <div class="notif-time">2 days ago</div>
-      </div>
-    </div>
-    <div class="notif-item" onclick="notifClick(this,'page-dashboard-wallet')">
-      <div class="notif-icon order">🎉</div>
-      <div class="notif-content">
-        <div class="notif-text"><strong>New order!</strong> Buldak Ramen x3 — you earned <strong>$4.19</strong></div>
-        <div class="notif-time">3 days ago</div>
-      </div>
-    </div>
-    <div class="notif-item" onclick="notifClick(this,'page-dashboard-share')">
-      <div class="notif-icon promo">⭐</div>
-      <div class="notif-content">
-        <div class="notif-text"><strong>New free samples available!</strong> Claim before they're gone</div>
-        <div class="notif-time">4 days ago</div>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- ==================== USER DROPDOWN ==================== -->
 <div class="nav-dropdown" id="user-dropdown">
