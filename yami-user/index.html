@@ -44,6 +44,23 @@
       color: #666;
       line-height: 1.6;
     }
+    .version-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 14px;
+      padding: 8px 16px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .version-badge.v-no-report {
+      background: #f0fdf4;
+      color: #16a34a;
+      border: 1px solid #bbf7d0;
+    }
+    .version-badge svg { width: 14px; height: 14px; }
     .card-grid {
       display: flex;
       flex-direction: column;
@@ -148,7 +165,11 @@
     <div class="slide">
       <div class="slide-header">
         <h1>Yami<span class="red-dot">.</span> Creator Program</h1>
-        <p>HTML Prototype Directory</p>
+        <p>Prototype Directory</p>
+        <div class="version-badge v-no-report">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          版本 B — 无独立 Report 页，订单明细集成在 Wallet 账单中
+        </div>
       </div>
 
       <div class="card-grid">
@@ -233,7 +254,7 @@
         </div>
       </div>
 
-      <div class="footer-note">Yami Creator Program · HTML Prototype · 2026</div>
+      <div class="footer-note">Yami Creator Program · Prototype · 2026</div>
     </div>
   </div>
 
