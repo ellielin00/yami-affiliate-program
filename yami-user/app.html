@@ -6095,6 +6095,7 @@ input, select { font-family: inherit; }
           April 2026
         </div>
         <div class="billing-right">
+          <span class="status-tag status-pending" style="font-size:11px;padding:3px 10px;">Pending</span>
           <span class="billing-orders-count">14 orders</span>
           <span class="billing-amount">$386.20</span>
           <span class="billing-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
@@ -6102,15 +6103,15 @@ input, select { font-family: inherit; }
       </div>
       <div class="billing-item" onclick="showPage('page-billing-detail')">
         <div class="billing-month"><span class="month-label">Last Month</span>March 2026</div>
-        <div class="billing-right"><span class="billing-orders-count">18 orders</span><span class="billing-amount">$412.80</span><span class="billing-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span></div>
+        <div class="billing-right"><span class="status-tag status-confirmed" style="font-size:11px;padding:3px 10px;">Confirmed</span><span class="billing-orders-count">18 orders</span><span class="billing-amount">$412.80</span><span class="billing-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span></div>
       </div>
       <div class="billing-item" onclick="showPage('page-billing-detail')">
         <div class="billing-month"><span class="month-label">Bill</span>February 2026</div>
-        <div class="billing-right"><span class="billing-orders-count">12 orders</span><span class="billing-amount">$298.50</span><span class="billing-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span></div>
+        <div class="billing-right"><span class="status-tag status-confirmed" style="font-size:11px;padding:3px 10px;">Confirmed</span><span class="billing-orders-count">12 orders</span><span class="billing-amount">$298.50</span><span class="billing-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span></div>
       </div>
       <div class="billing-item" onclick="showPage('page-billing-detail')">
         <div class="billing-month"><span class="month-label">Bill</span>January 2026</div>
-        <div class="billing-right"><span class="billing-orders-count">15 orders</span><span class="billing-amount">$345.00</span><span class="billing-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span></div>
+        <div class="billing-right"><span class="status-tag status-confirmed" style="font-size:11px;padding:3px 10px;">Confirmed</span><span class="billing-orders-count">15 orders</span><span class="billing-amount">$345.00</span><span class="billing-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span></div>
       </div>
     </div>
 
@@ -6504,16 +6505,12 @@ input, select { font-family: inherit; }
     <div class="billing-summary-card">
       <div style="display:flex;flex-wrap:wrap;gap:16px;">
         <div class="billing-summary-stat" style="flex:1;min-width:140px;">
-          <div class="bs-value">$61.47</div>
+          <div class="bs-value">$49.59</div>
           <div class="bs-label">Total Commission</div>
         </div>
         <div class="billing-summary-stat" style="flex:1;min-width:140px;">
-          <div class="bs-value text-green">$42.07</div>
-          <div class="bs-label">Confirmed</div>
-        </div>
-        <div class="billing-summary-stat" style="flex:1;min-width:140px;">
-          <div class="bs-value text-amber">$19.40</div>
-          <div class="bs-label">Pending</div>
+          <div class="bs-value text-green">$61.47</div>
+          <div class="bs-label">Sales</div>
         </div>
         <div class="billing-summary-stat" style="flex:1;min-width:140px;">
           <div class="bs-value text-muted">-$5.88</div>
