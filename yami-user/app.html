@@ -5889,9 +5889,8 @@ input, select { font-family: inherit; }
 
     <div class="status-legend">
       <h4>Commission Status Guide</h4>
-      <div class="legend-row"><span class="status-tag status-confirmed">CONFIRMED</span> Commission earned and locked in.</div>
-      <div class="legend-row"><span class="status-tag status-pending">PENDING</span> Waiting for buyer to receive the order before commission is confirmed.</div>
-      <div class="legend-row"><span class="status-tag status-cancelled">CANCELLED</span> Order was cancelled or refunded by the customer. No commission earned.</div>
+      <div class="legend-row"><span class="status-tag status-confirmed">CONFIRMED</span> 佣金已出账，将在下一个打款周期处理。</div>
+      <div class="legend-row"><span class="status-tag status-pending">PENDING</span> 佣金未出账，账期结束后将自动确认。</div>
     </div>
   </div>
   <footer class="footer-minimal">
@@ -6267,7 +6266,7 @@ input, select { font-family: inherit; }
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
         Back to Wallet
       </button>
-      <h1>April 2026</h1>
+      <h1>April 2026 <span class="status-tag status-pending" style="font-size:12px;padding:4px 12px;margin-left:10px;vertical-align:middle;">Pending</span></h1>
     </div>
 
     <!-- Monthly Summary -->
@@ -6292,14 +6291,7 @@ input, select { font-family: inherit; }
       </div>
     </div>
 
-    <!-- Status legend inline -->
-    <div class="status-legend" style="margin-bottom:24px;">
-      <h4>Commission Status Guide</h4>
-      <div class="legend-row"><span class="status-tag status-confirmed">CONFIRMED</span> Commission earned and locked in. Payout will be processed on the next billing cycle.</div>
-      <div class="legend-row"><span class="status-tag status-pending">PENDING</span> Buyer's package has not been delivered yet. Commission confirms after successful delivery.</div>
-      <div class="legend-row"><span class="status-tag status-cancelled">CANCELLED</span> Order was cancelled before shipment. No commission earned.</div>
-      <div class="legend-row"><span class="status-tag status-refunded">REFUNDED</span> Buyer returned the item or requested a refund. Commission has been reversed.</div>
-    </div>
+
 
     <!-- Sales Details (SKU-level order details) -->
     <div style="margin-bottom:24px;">
@@ -6307,8 +6299,6 @@ input, select { font-family: inherit; }
         <h2 style="font-size:18px;font-weight:500;color:var(--neutral-950);">Sales Details</h2>
         <div class="cat-filter-row" style="margin-bottom:0;gap:6px;">
           <button class="cat-filter-pill active" onclick="filterBillingOrders(this,'all')">All</button>
-          <button class="cat-filter-pill" onclick="filterBillingOrders(this,'confirmed')">Confirmed</button>
-          <button class="cat-filter-pill" onclick="filterBillingOrders(this,'pending')">Pending</button>
           <button class="cat-filter-pill" onclick="filterBillingOrders(this,'cancelled')">Cancelled</button>
           <button class="cat-filter-pill" onclick="filterBillingOrders(this,'refunded')">Refunded</button>
         </div>
@@ -6316,7 +6306,7 @@ input, select { font-family: inherit; }
 
       <!-- Order rows -->
       <div style="display:flex;flex-direction:column;gap:1px;border-radius:var(--radius-lg);overflow:hidden;">
-        <div class="order-row" data-status="confirmed" style="display:flex;align-items:center;gap:14px;padding:16px 20px;background:#fff;">
+        <div class="order-row" data-status="normal" style="display:flex;align-items:center;gap:14px;padding:16px 20px;background:#fff;">
           <div style="width:48px;height:48px;border-radius:10px;background:var(--neutral-100);display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;"><img src="Images/sample/sample-1.jpeg" style="width:100%;height:100%;object-fit:cover;" alt=""></div>
           <div style="flex:1;min-width:0;">
             <div style="font-size:14px;font-weight:500;color:var(--neutral-950);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Samyang Buldak Hot Chicken Ramen</div>
@@ -6324,10 +6314,9 @@ input, select { font-family: inherit; }
           </div>
           <div style="text-align:right;flex-shrink:0;">
             <div style="font-size:15px;font-weight:500;color:var(--neutral-950);">$7.17</div>
-            <div style="margin-top:3px;"><span class="status-tag status-confirmed" style="font-size:11px;padding:2px 8px;">Confirmed</span></div>
           </div>
         </div>
-        <div class="order-row" data-status="confirmed" style="display:flex;align-items:center;gap:14px;padding:16px 20px;background:#fff;">
+        <div class="order-row" data-status="normal" style="display:flex;align-items:center;gap:14px;padding:16px 20px;background:#fff;">
           <div style="width:48px;height:48px;border-radius:10px;background:var(--neutral-100);display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;"><img src="Images/sample/sample-2.jpeg" style="width:100%;height:100%;object-fit:cover;" alt=""></div>
           <div style="flex:1;min-width:0;">
             <div style="font-size:14px;font-weight:500;color:var(--neutral-950);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">COSRX Advanced Snail 96 Mucin Power Essence</div>
@@ -6335,10 +6324,9 @@ input, select { font-family: inherit; }
           </div>
           <div style="text-align:right;flex-shrink:0;">
             <div style="font-size:15px;font-weight:500;color:var(--neutral-950);">$5.00</div>
-            <div style="margin-top:3px;"><span class="status-tag status-confirmed" style="font-size:11px;padding:2px 8px;">Confirmed</span></div>
           </div>
         </div>
-        <div class="order-row" data-status="confirmed" style="display:flex;align-items:center;gap:14px;padding:16px 20px;background:#fff;">
+        <div class="order-row" data-status="normal" style="display:flex;align-items:center;gap:14px;padding:16px 20px;background:#fff;">
           <div style="width:48px;height:48px;border-radius:10px;background:var(--neutral-100);display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;"><img src="Images/sample/sample-3.jpeg" style="width:100%;height:100%;object-fit:cover;" alt=""></div>
           <div style="flex:1;min-width:0;">
             <div style="font-size:14px;font-weight:500;color:var(--neutral-950);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">LANEIGE Lip Sleeping Mask, Berry</div>
@@ -6346,10 +6334,9 @@ input, select { font-family: inherit; }
           </div>
           <div style="text-align:right;flex-shrink:0;">
             <div style="font-size:15px;font-weight:500;color:var(--neutral-950);">$9.60</div>
-            <div style="margin-top:3px;"><span class="status-tag status-confirmed" style="font-size:11px;padding:2px 8px;">Confirmed</span></div>
           </div>
         </div>
-        <div class="order-row" data-status="confirmed" style="display:flex;align-items:center;gap:14px;padding:16px 20px;background:#fff;">
+        <div class="order-row" data-status="normal" style="display:flex;align-items:center;gap:14px;padding:16px 20px;background:#fff;">
           <div style="width:48px;height:48px;border-radius:10px;background:var(--neutral-100);display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;"><img src="Images/sample/sample-4.jpeg" style="width:100%;height:100%;object-fit:cover;" alt=""></div>
           <div style="flex:1;min-width:0;">
             <div style="font-size:14px;font-weight:500;color:var(--neutral-950);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Nongshim Shin Black Ramyun 4-Pack</div>
@@ -6357,10 +6344,9 @@ input, select { font-family: inherit; }
           </div>
           <div style="text-align:right;flex-shrink:0;">
             <div style="font-size:15px;font-weight:500;color:var(--neutral-950);">$5.39</div>
-            <div style="margin-top:3px;"><span class="status-tag status-confirmed" style="font-size:11px;padding:2px 8px;">Confirmed</span></div>
           </div>
         </div>
-        <div class="order-row" data-status="confirmed" style="display:flex;align-items:center;gap:14px;padding:16px 20px;background:#fff;">
+        <div class="order-row" data-status="normal" style="display:flex;align-items:center;gap:14px;padding:16px 20px;background:#fff;">
           <div style="width:48px;height:48px;border-radius:10px;background:var(--neutral-100);display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;"><img src="Images/Collection-item-5.jpeg" style="width:100%;height:100%;object-fit:cover;" alt=""></div>
           <div style="flex:1;min-width:0;">
             <div style="font-size:14px;font-weight:500;color:var(--neutral-950);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">ANESSA Perfect UV Sunscreen Milk SPF50+</div>
@@ -6368,10 +6354,9 @@ input, select { font-family: inherit; }
           </div>
           <div style="text-align:right;flex-shrink:0;">
             <div style="font-size:15px;font-weight:500;color:var(--neutral-950);">$14.91</div>
-            <div style="margin-top:3px;"><span class="status-tag status-confirmed" style="font-size:11px;padding:2px 8px;">Confirmed</span></div>
           </div>
         </div>
-        <div class="order-row" data-status="pending" style="display:flex;align-items:center;gap:14px;padding:16px 20px;background:#fff;">
+        <div class="order-row" data-status="normal" style="display:flex;align-items:center;gap:14px;padding:16px 20px;background:#fff;">
           <div style="width:48px;height:48px;border-radius:10px;background:var(--neutral-100);display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;"><img src="Images/sample/sample-2.jpeg" style="width:100%;height:100%;object-fit:cover;" alt=""></div>
           <div style="flex:1;min-width:0;">
             <div style="font-size:14px;font-weight:500;color:var(--neutral-950);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">COSRX Advanced Snail 96 Mucin Power Essence</div>
@@ -6379,10 +6364,9 @@ input, select { font-family: inherit; }
           </div>
           <div style="text-align:right;flex-shrink:0;">
             <div style="font-size:15px;font-weight:500;color:var(--neutral-950);">$10.00</div>
-            <div style="margin-top:3px;"><span class="status-tag status-pending" style="font-size:11px;padding:2px 8px;">Pending</span></div>
           </div>
         </div>
-        <div class="order-row" data-status="pending" style="display:flex;align-items:center;gap:14px;padding:16px 20px;background:#fff;">
+        <div class="order-row" data-status="normal" style="display:flex;align-items:center;gap:14px;padding:16px 20px;background:#fff;">
           <div style="width:48px;height:48px;border-radius:10px;background:var(--neutral-100);display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;"><img src="Images/Collection-item-3.jpeg" style="width:100%;height:100%;object-fit:cover;" alt=""></div>
           <div style="flex:1;min-width:0;">
             <div style="font-size:14px;font-weight:500;color:var(--neutral-950);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Lotte Pepero Original Chocolate Biscuit Sticks</div>
@@ -6390,10 +6374,9 @@ input, select { font-family: inherit; }
           </div>
           <div style="text-align:right;flex-shrink:0;">
             <div style="font-size:15px;font-weight:500;color:var(--neutral-950);">$3.20</div>
-            <div style="margin-top:3px;"><span class="status-tag status-pending" style="font-size:11px;padding:2px 8px;">Pending</span></div>
           </div>
         </div>
-        <div class="order-row" data-status="pending" style="display:flex;align-items:center;gap:14px;padding:16px 20px;background:#fff;">
+        <div class="order-row" data-status="normal" style="display:flex;align-items:center;gap:14px;padding:16px 20px;background:#fff;">
           <div style="width:48px;height:48px;border-radius:10px;background:var(--neutral-100);display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;"><img src="Images/Collection-item-6.jpeg" style="width:100%;height:100%;object-fit:cover;" alt=""></div>
           <div style="flex:1;min-width:0;">
             <div style="font-size:14px;font-weight:500;color:var(--neutral-950);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Yamamotoyama Sencha Green Tea, 100 bags</div>
@@ -6401,7 +6384,6 @@ input, select { font-family: inherit; }
           </div>
           <div style="text-align:right;flex-shrink:0;">
             <div style="font-size:15px;font-weight:500;color:var(--neutral-950);">$3.40</div>
-            <div style="margin-top:3px;"><span class="status-tag status-pending" style="font-size:11px;padding:2px 8px;">Pending</span></div>
           </div>
         </div>
         <div class="order-row" data-status="cancelled" style="display:flex;align-items:center;gap:14px;padding:16px 20px;background:#fff;">
