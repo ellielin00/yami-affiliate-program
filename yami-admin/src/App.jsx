@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
-import { Layout, Menu, Breadcrumb } from 'antd'
+import { Layout, Menu, Breadcrumb, Tag } from 'antd'
 import {
   AppstoreFilled, DashboardFilled, ProfileFilled,
   ContactsFilled, WalletFilled, GiftFilled, StarFilled,
   PercentageOutlined
 } from '@ant-design/icons'
 import { CreatorsProvider } from './context/CreatorsContext'
-import DashboardPage from './pages/DashboardPage'
 import ReviewPage from './pages/ReviewPage'
 import CreatorsPage from './pages/CreatorsPage'
 import PayoutsPage from './pages/PayoutsPage'
@@ -22,19 +21,17 @@ const menuItems = [
     icon: <AppstoreFilled />,
     label: '创作者中心',
     children: [
-      { key: 'dashboard', label: '› 数据概览' },
       { key: 'review',    label: '› 创作者审核' },
       { key: 'manage',    label: '› 创作者管理' },
       { key: 'payouts',   label: '› 结账管理' },
-      { key: 'samples',   label: '› 样品管理' },
-      { key: 'recommended', label: '› 推荐商品管理' },
-      { key: 'commission', label: '› 佣金管理' },
+      { key: 'samples',   label: <span>› 样品管理 <Tag color="default" style={{ fontSize: 10, marginLeft: 4, padding: '0 4px' }}>首期不做</Tag></span> },
+      { key: 'recommended', label: <span>› 推荐商品管理 <Tag color="default" style={{ fontSize: 10, marginLeft: 4, padding: '0 4px' }}>首期不做</Tag></span> },
+      { key: 'commission', label: <span>› 佣金管理 <Tag color="default" style={{ fontSize: 10, marginLeft: 4, padding: '0 4px' }}>首期不做</Tag></span> },
     ],
   },
 ]
 
 const pageTitles = {
-  dashboard: '数据概览',
   review: '创作者审核',
   manage: '创作者管理',
   payouts: '结账管理',
@@ -44,18 +41,17 @@ const pageTitles = {
 }
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState('dashboard')
+  const [currentPage, setCurrentPage] = useState('review')
 
   const renderPage = () => {
     switch (currentPage) {
-      case 'dashboard': return <DashboardPage onNavigate={setCurrentPage} />
       case 'review': return <ReviewPage />
       case 'manage': return <CreatorsPage />
       case 'payouts': return <PayoutsPage />
       case 'samples': return <SamplesPage />
       case 'recommended': return <RecommendedPage />
       case 'commission': return <CommissionPage />
-      default: return <DashboardPage />
+      default: return <ReviewPage />
     }
   }
 

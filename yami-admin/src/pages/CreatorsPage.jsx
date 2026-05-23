@@ -479,40 +479,55 @@ export default function CreatorsPage() {
                 key: 'stats',
                 label: <Space><BarChartOutlined />推广数据</Space>,
                 children: (() => {
-                  const orders = mockOrdersByCreator[selected.key] || []
-                  const confirmed = orders.filter(o => o.status === 'confirmed')
-                  const totalCommission = confirmed.reduce((s, o) => s + o.commission, 0)
-                  const totalOrderAmt = confirmed.reduce((s, o) => s + o.orderAmt, 0)
-                  const orderColumns = [
-                    { title: '日期', dataIndex: 'date', width: 110, render: v => <Text type="secondary" style={{ fontSize: 12 }}>{v}</Text> },
-                    { title: '订单号', dataIndex: 'id', render: v => <Text code style={{ fontSize: 11 }}>{v}</Text> },
-                    { title: '商品', dataIndex: 'product', render: v => <Text style={{ fontSize: 13 }}>{v}</Text> },
-                    { title: '订单金额', dataIndex: 'orderAmt', render: v => `$${v.toFixed(2)}` },
+                  // 月度账单数据
+                  const monthlyBills = [
+                    { key: '1', month: 'April 2026', orders: 4, commission: 24.57, sales: 177.90, status: 'pending' },
+                    { key: '2', month: 'March 2026', orders: 8, commission: 52.30, sales: 348.60, status: 'confirmed' },
+                    { key: '3', month: 'February 2026', orders: 6, commission: 38.45, sales: 256.30, status: 'confirmed' },
+                    { key: '4', month: 'January 2026', orders: 5, commission: 31.20, sales: 208.00, status: 'confirmed' },
+                  ]
+                  const totalOrders = monthlyBills.reduce((s, b) => s + b.orders, 0)
+                  const totalCommission = monthlyBills.reduce((s, b) => s + b.commission, 0)
+                  const totalSales = monthlyBills.reduce((s, b) => s + b.sales, 0)
+                  
+                  const billColumns = [
+                    { title: '月份', dataIndex: 'month', render: v => <Text strong style={{ fontSize: 13 }}>{v}</Text> },
+                    { title: '订单数', dataIndex: 'orders', render: v => <Text>{v} 单</Text> },
                     { title: '佣金', dataIndex: 'commission', render: v => <Text strong style={{ color: '#16997F' }}>${v.toFixed(2)}</Text> },
-                    { title: '状态', dataIndex: 'status', render: s => <Tag color={orderStatusConfig[s].color}>{orderStatusConfig[s].text}</Tag> },
+                    { title: '销售额', dataIndex: 'sales', render: v => <Text>${v.toFixed(2)}</Text> },
+                    { 
+                      title: '账期状态', 
+                      dataIndex: 'status', 
+                      render: s => s === 'confirmed' 
+                        ? <Tag color="green">已确认</Tag> 
+                        : <Tag color="orange">待确认</Tag> 
+                    },
                   ]
                   return (
                     <div>
                       <Row gutter={16} style={{ marginBottom: 20 }}>
                         <Col span={8}>
-                          <Card size="small"><Statistic title="本月订单数" value={orders.length} suffix="单" valueStyle={{ fontSize: 22 }} /></Card>
+                          <Card size="small"><Statistic title="总订单数" value={totalOrders} suffix="单" valueStyle={{ fontSize: 22 }} /></Card>
                         </Col>
                         <Col span={8}>
-                          <Card size="small"><Statistic title="已确认订单额" value={totalOrderAmt} prefix="$" precision={2} valueStyle={{ fontSize: 22 }} /></Card>
+                          <Card size="small"><Statistic title="总佣金" value={totalCommission} prefix="$" precision={2} valueStyle={{ fontSize: 22, color: '#16997F' }} /></Card>
                         </Col>
                         <Col span={8}>
-                          <Card size="small"><Statistic title="已确认佣金" value={totalCommission} prefix="$" precision={2} valueStyle={{ fontSize: 22, color: '#16997F' }} /></Card>
+                          <Card size="small"><Statistic title="总销售额" value={totalSales} prefix="$" precision={2} valueStyle={{ fontSize: 22 }} /></Card>
                         </Col>
                       </Row>
+                      <Text strong style={{ fontSize: 14, display: 'block', marginBottom: 12 }}>月度账单明细</Text>
                       <Table
-                        columns={orderColumns}
-                        dataSource={orders.map((o, i) => ({ ...o, key: i }))}
+                        columns={billColumns}
+                        dataSource={monthlyBills}
                         size="small" pagination={false}
-                        locale={{ emptyText: '暂无订单记录' }}
-                        summary={() => orders.length > 0 ? (
+                        locale={{ emptyText: '暂无账单记录' }}
+                        summary={() => monthlyBills.length > 0 ? (
                           <Table.Summary.Row>
-                            <Table.Summary.Cell colSpan={4}><Text strong>已确认合计</Text></Table.Summary.Cell>
+                            <Table.Summary.Cell><Text strong>合计</Text></Table.Summary.Cell>
+                            <Table.Summary.Cell><Text strong>{totalOrders} 单</Text></Table.Summary.Cell>
                             <Table.Summary.Cell><Text strong style={{ color: '#16997F' }}>${totalCommission.toFixed(2)}</Text></Table.Summary.Cell>
+                            <Table.Summary.Cell><Text strong>${totalSales.toFixed(2)}</Text></Table.Summary.Cell>
                             <Table.Summary.Cell />
                           </Table.Summary.Row>
                         ) : null}
