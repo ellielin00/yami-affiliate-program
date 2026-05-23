@@ -6277,7 +6277,7 @@ input, select { font-family: inherit; }
           <div class="bs-label">Total Commission</div>
         </div>
         <div class="billing-summary-stat" style="flex:1;min-width:140px;">
-          <div class="bs-value text-green">$61.47</div>
+          <div class="bs-value">$61.47</div>
           <div class="bs-label">Sales</div>
         </div>
         <div class="billing-summary-stat" style="flex:1;min-width:140px;">
@@ -8088,6 +8088,8 @@ var _searchModalTarget = 'create'; // 'create' or 'edit'
 
 window.openProductSearchModal = function(target) {
   _searchModalTarget = target || 'create';
+  // Clear pending products
+  _pendingSearchProducts = [];
   var input = document.getElementById('product-search-input');
   if (input) input.value = '';
   var pills = document.querySelectorAll('#search-cat-filters .cat-filter-pill');
@@ -8103,6 +8105,9 @@ window.openProductSearchModal = function(target) {
   var strip = document.getElementById('search-added-thumbs');
   if (strip) strip.innerHTML = '';
   updateSearchAddedCount();
+  // Reset footer
+  var footer = document.getElementById('search-modal-footer');
+  if (footer) footer.style.display = 'none';
   // Reset empty state
   var emptyState = document.getElementById('search-empty-state');
   if (emptyState) emptyState.style.display = 'none';
@@ -8114,6 +8119,8 @@ window.openProductSearchModal = function(target) {
 
 window.closeProductSearchModal = function() {
   document.getElementById('product-search-modal').style.display = 'none';
+  // Clear pending products when closing without saving
+  _pendingSearchProducts = [];
 };
 
 window.filterSearchProducts = function(query) {
@@ -8139,6 +8146,9 @@ window.filterSearchByCategory = function(btn, cat) {
   }
 };
 
+// Temporary storage for products selected in the modal
+var _pendingSearchProducts = [];
+
 window.addFromSearch = function(btn) {
   if (btn.disabled) return;
   var card = btn.closest('.product-card');
@@ -8154,32 +8164,73 @@ window.addFromSearch = function(btn) {
   btn.style.background = 'var(--emerald-600)';
   btn.style.color = '#fff';
 
+  // Store product data temporarily
+  var productData = {
+    brand: brand,
+    name: name,
+    fullName: brand + ' ' + name,
+    price: price,
+    earn: earn,
+    imgSrc: imgSrc,
+    sourceBtn: btn
+  };
+  _pendingSearchProducts.push(productData);
+
   // Add thumbnail to strip
   addSearchThumb(imgSrc, brand + ' ' + name, btn);
 
-  var newRow = document.createElement('div');
-  newRow.className = 'collection-product-row';
-  newRow.innerHTML = '<span class="drag-handle">:::</span>' +
-    '<div class="cp-img"><img src="' + imgSrc + '" alt="Product" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;"></div>' +
-    '<div class="cp-info"><h4>' + brand + ' ' + name + '</h4><div class="cp-meta"><span class="cp-price">' + price + '</span><span class="cp-earn">' + earn + '</span></div></div>' +
-    '<button class="cp-remove" onclick="removeSearchAdded(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>';
+  // Update footer
+  updateSearchModalFooter();
+};
 
-  if (_searchModalTarget === 'create') {
-    var list = document.getElementById('added-products-list');
-    list.appendChild(newRow);
-    var emptyState = document.getElementById('added-empty-state');
-    if (emptyState) emptyState.style.display = 'none';
-    updateAddedCount();
-    validateCreateCollection();
-  } else {
-    var header = document.querySelector('#page-collection-detail .collection-products-header');
-    if (header) {
-      var container = header.parentElement;
-      var addMore = document.getElementById('edit-add-more');
-      container.insertBefore(newRow, addMore);
+window.saveSearchProducts = function() {
+  // Add all pending products to the collection
+  for (var i = 0; i < _pendingSearchProducts.length; i++) {
+    var p = _pendingSearchProducts[i];
+    var newRow = document.createElement('div');
+    newRow.className = 'collection-product-row';
+    newRow.innerHTML = '<span class="drag-handle">:::</span>' +
+      '<div class="cp-img"><img src="' + p.imgSrc + '" alt="Product" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;"></div>' +
+      '<div class="cp-info"><h4>' + p.fullName + '</h4><div class="cp-meta"><span class="cp-price">' + p.price + '</span><span class="cp-earn">' + p.earn + '</span></div></div>' +
+      '<button class="cp-remove" onclick="removeCollectionProduct(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>';
+
+    if (_searchModalTarget === 'create') {
+      var list = document.getElementById('added-products-list');
+      list.appendChild(newRow);
+      var emptyState = document.getElementById('added-empty-state');
+      if (emptyState) emptyState.style.display = 'none';
+    } else {
+      var header = document.querySelector('#page-collection-detail .collection-products-header');
+      if (header) {
+        var container = header.parentElement;
+        var addMore = document.getElementById('edit-add-more');
+        container.insertBefore(newRow, addMore);
+      }
     }
   }
-  showToast('\u2713 Added: ' + name.substring(0, 30));
+
+  // Update counts and validation
+  if (_searchModalTarget === 'create') {
+    updateAddedCount();
+    validateCreateCollection();
+  }
+
+  // Show toast
+  var count = _pendingSearchProducts.length;
+  showToast('\u2713 Added ' + count + ' product' + (count > 1 ? 's' : '') + ' to collection');
+
+  // Clear pending and close modal
+  _pendingSearchProducts = [];
+  closeProductSearchModal();
+};
+
+window.removeCollectionProduct = function(removeBtn) {
+  var row = removeBtn.closest('.collection-product-row');
+  row.remove();
+  if (_searchModalTarget === 'create') {
+    updateAddedCount();
+    validateCreateCollection();
+  }
 };
 
 window.removeSearchAdded = function(removeBtn) {
@@ -8218,25 +8269,17 @@ window.removeSearchThumb = function(closeBtn) {
     btn.style.background = '';
     btn.style.color = '';
   }
-  // Also remove from the added products list
+  // Remove from pending products array
   var name = thumb._productName;
-  if (_searchModalTarget === 'create') {
-    var rows = document.querySelectorAll('#added-products-list .collection-product-row');
-    for (var i = 0; i < rows.length; i++) {
-      var h4 = rows[i].querySelector('h4');
-      if (h4 && h4.textContent === name) { rows[i].remove(); break; }
-    }
-    updateAddedCount();
-    validateCreateCollection();
-  } else {
-    var rows = document.querySelectorAll('#page-collection-detail .collection-product-row');
-    for (var i = 0; i < rows.length; i++) {
-      var h4 = rows[i].querySelector('h4');
-      if (h4 && h4.textContent === name) { rows[i].remove(); break; }
+  for (var i = 0; i < _pendingSearchProducts.length; i++) {
+    if (_pendingSearchProducts[i].fullName === name) {
+      _pendingSearchProducts.splice(i, 1);
+      break;
     }
   }
   thumb.remove();
   updateSearchAddedCount();
+  updateSearchModalFooter();
   updateStripArrows();
 };
 
@@ -8247,6 +8290,14 @@ window.updateSearchAddedCount = function() {
   if (badge) badge.textContent = count;
   var section = document.getElementById('search-added-strip');
   if (section) section.style.display = count > 0 ? 'block' : 'none';
+};
+
+window.updateSearchModalFooter = function() {
+  var count = _pendingSearchProducts.length;
+  var footer = document.getElementById('search-modal-footer');
+  var countSpan = document.getElementById('search-footer-count');
+  if (footer) footer.style.display = count > 0 ? 'block' : 'none';
+  if (countSpan) countSpan.textContent = count;
 };
 
 window.scrollStrip = function(dir) {
@@ -8767,6 +8818,18 @@ document.getElementById('mobile-nav').addEventListener('click', function(e) {
         <span style="font-size:13px;color:var(--text-secondary);">...</span>
         <span style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:var(--radius-sm);font-size:13px;font-weight:500;color:var(--text-secondary);cursor:pointer;">12</span>
         <button class="btn-ghost" style="font-size:13px;">Next →</button>
+      </div>
+    </div>
+    <!-- Footer with Save Button -->
+    <div id="search-modal-footer" style="display:none;padding:16px 32px;border-top:1px solid var(--border-default);flex-shrink:0;background:#fff;">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <div style="font-size:14px;color:var(--text-secondary);">
+          <span id="search-footer-count">0</span> products selected
+        </div>
+        <div style="display:flex;gap:12px;">
+          <button class="btn-ghost" onclick="closeProductSearchModal()">Cancel</button>
+          <button class="btn-primary" id="search-save-btn" onclick="saveSearchProducts()">Save to Collection</button>
+        </div>
       </div>
     </div>
   </div>
