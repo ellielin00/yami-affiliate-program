@@ -6,7 +6,7 @@ import {
 } from 'antd'
 import {
   DownloadOutlined, EyeOutlined, CheckCircleOutlined,
-  ClockCircleOutlined, FilterOutlined
+  ClockCircleOutlined, FilterOutlined, DollarOutlined
 } from '@ant-design/icons'
 import * as XLSX from 'xlsx'
 import { saveAs } from 'file-saver'
@@ -186,6 +186,7 @@ export default function PayoutsPage() {
   const [filterPeriod, setFilterPeriod] = useState('all')
   const [filterStatus, setFilterStatus] = useState('all')
   const [detailDrawer, setDetailDrawer] = useState({ open: false, record: null })
+  const [selectedRowKeys, setSelectedRowKeys] = useState([])
 
   // 获取所有账期选项
   const periods = [...new Set(records.map(r => r.period))]
@@ -207,6 +208,44 @@ export default function PayoutsPage() {
   const handleExportSingle = (record) => {
     exportSingleExcel(record)
     message.success('明细已导出')
+  }
+
+  // 批量标记为已打款
+  const handleMarkAsPaid = () => {
+    if (selectedRowKeys.length === 0) {
+      message.warning('请先选择要标记的账单')
+      return
+    }
+    // 检查是否有未提交税表的
+    const selectedRecords = records.filter(r => selectedRowKeys.includes(r.key))
+    const unpaidTax = selectedRecords.filter(r => r.taxForm !== 'submitted')
+    if (unpaidTax.length > 0) {
+      message.error(`${unpaidTax.map(r => r.name).join('、')} 税表未提交，无法标记为已打款`)
+      return
+    }
+    // 更新状态
+    setRecords(prev => prev.map(r => 
+      selectedRowKeys.includes(r.key) ? { ...r, billStatus: 'confirmed' } : r
+    ))
+    message.success(`已将 ${selectedRowKeys.length} 条账单标记为已打款`)
+    setSelectedRowKeys([])
+  }
+
+  // 批量导出选中
+  const handleExportSelected = () => {
+    if (selectedRowKeys.length === 0) {
+      message.warning('请先选择要导出的账单')
+      return
+    }
+    const selectedRecords = records.filter(r => selectedRowKeys.includes(r.key))
+    exportBatchExcel(selectedRecords)
+    message.success(`已导出 ${selectedRecords.length} 条明细`)
+  }
+
+  // 表格选择配置
+  const rowSelection = {
+    selectedRowKeys,
+    onChange: (keys) => setSelectedRowKeys(keys),
   }
 
   const columns = [
@@ -345,7 +384,25 @@ export default function PayoutsPage() {
             <Option value="confirmed">已确认</Option>
             <Option value="pending">待确认</Option>
           </Select>
-          <div style={{ marginLeft: 'auto' }}>
+          <div style={{ marginLeft: 'auto', display: 'flex', gap: 8 }}>
+            {selectedRowKeys.length > 0 && (
+              <>
+                <Button
+                  icon={<DollarOutlined />}
+                  type="primary"
+                  style={{ background: '#16997F', borderColor: '#16997F' }}
+                  onClick={handleMarkAsPaid}
+                >
+                  标记为已打款 ({selectedRowKeys.length})
+                </Button>
+                <Button
+                  icon={<DownloadOutlined />}
+                  onClick={handleExportSelected}
+                >
+                  导出选中 ({selectedRowKeys.length})
+                </Button>
+              </>
+            )}
             <Button
               icon={<DownloadOutlined />}
               onClick={() => {
@@ -363,6 +420,7 @@ export default function PayoutsPage() {
       {/* 主表格 */}
       <Card>
         <Table
+          rowSelection={rowSelection}
           columns={columns}
           dataSource={filtered}
           pagination={{ pageSize: 20 }}
