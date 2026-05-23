@@ -27,12 +27,12 @@ const orderStatusConfig = {
 }
 
 // Mock 数据：每条记录 = 一个创作者 × 一个月度账期
-// 新增字段：sales（销售额）、cancelled（取消金额）、refunded（售后金额）
+// 新增字段：sales（销售额）、cancelled（取消金额）、refunded（售后金额）、exported（是否已导出）
 const initialRecords = [
   {
     key: '1', name: 'Amy Chen', avatar: 'A', email: 'amy@email.com',
     period: 'April 2026', amount: 49.59, sales: 61.47, cancelled: 5.88, refunded: 6.00,
-    taxForm: 'submitted', billStatus: 'pending',
+    taxForm: 'submitted', billStatus: 'pending', exported: false,
     orders: [
       { id: 'YM-20260402-8812', product: 'Samyang Buldak Ramen x3',    orderAmt: 20.97, commission: 7.17,  status: 'confirmed' },
       { id: 'YM-20260403-9201', product: 'COSRX Snail Mucin Essence',  orderAmt: 24.99, commission: 5.00,  status: 'confirmed' },
@@ -43,7 +43,7 @@ const initialRecords = [
   {
     key: '2', name: 'Jason Liu', avatar: 'J', email: 'jason@email.com',
     period: 'April 2026', amount: 38.50, sales: 42.00, cancelled: 2.50, refunded: 1.00,
-    taxForm: 'not_submitted', billStatus: 'pending',
+    taxForm: 'not_submitted', billStatus: 'pending', exported: false,
     orders: [
       { id: 'YM-20260404-1101', product: 'Nongshim Shin Ramyun x4',    orderAmt: 39.96, commission: 8.00,  status: 'confirmed' },
       { id: 'YM-20260405-1205', product: 'ANESSA Sunscreen',           orderAmt: 29.99, commission: 6.00,  status: 'confirmed' },
@@ -52,7 +52,7 @@ const initialRecords = [
   {
     key: '3', name: 'Mia Wang', avatar: 'M', email: 'mia@email.com',
     period: 'April 2026', amount: 52.30, sales: 58.00, cancelled: 3.20, refunded: 2.50,
-    taxForm: 'submitted', billStatus: 'pending',
+    taxForm: 'submitted', billStatus: 'pending', exported: false,
     orders: [
       { id: 'YM-20260403-2201', product: 'COSRX Snail Mucin x2',       orderAmt: 49.98, commission: 10.00, status: 'confirmed' },
       { id: 'YM-20260406-2305', product: 'Innisfree Green Tea Serum',  orderAmt: 26.50, commission: 5.30,  status: 'confirmed' },
@@ -61,7 +61,7 @@ const initialRecords = [
   {
     key: '4', name: 'Kevin Park', avatar: 'K', email: 'kevin@email.com',
     period: 'March 2026', amount: 45.20, sales: 48.00, cancelled: 1.80, refunded: 1.00,
-    taxForm: 'submitted', billStatus: 'confirmed',
+    taxForm: 'submitted', billStatus: 'confirmed', exported: true,
     orders: [
       { id: 'YM-20260310-8801', product: 'Shin Ramyun x3',             orderAmt: 29.97, commission: 6.00,  status: 'confirmed' },
       { id: 'YM-20260315-8902', product: 'Pocky Matcha x4',            orderAmt: 19.96, commission: 4.00,  status: 'confirmed' },
@@ -70,7 +70,7 @@ const initialRecords = [
   {
     key: '5', name: 'Amy Chen', avatar: 'A', email: 'amy@email.com',
     period: 'March 2026', amount: 62.80, sales: 68.50, cancelled: 3.20, refunded: 2.50,
-    taxForm: 'submitted', billStatus: 'confirmed',
+    taxForm: 'submitted', billStatus: 'confirmed', exported: true,
     orders: [
       { id: 'YM-20260302-7701', product: 'Buldak Ramen x2',            orderAmt: 13.98, commission: 4.19,  status: 'confirmed' },
       { id: 'YM-20260305-7802', product: 'COSRX Essence',              orderAmt: 24.99, commission: 5.00,  status: 'confirmed' },
@@ -204,10 +204,25 @@ export default function PayoutsPage() {
   const totalCancelled = filtered.reduce((s, r) => s + r.cancelled, 0)
   const totalRefunded = filtered.reduce((s, r) => s + r.refunded, 0)
 
-  // 导出单条
+  // 导出单条（并标记为已导出）
   const handleExportSingle = (record) => {
     exportSingleExcel(record)
+    setRecords(prev => prev.map(r => 
+      r.key === record.key ? { ...r, exported: true } : r
+    ))
     message.success('明细已导出')
+  }
+
+  // 单条标记为已打款
+  const handleMarkSingleAsPaid = (record) => {
+    if (record.taxForm !== 'submitted') {
+      message.error('税表未提交，无法标记为已打款')
+      return
+    }
+    setRecords(prev => prev.map(r => 
+      r.key === record.key ? { ...r, billStatus: 'confirmed' } : r
+    ))
+    message.success(`已将 ${record.name} 的账单标记为已打款`)
   }
 
   // 批量标记为已打款
@@ -231,7 +246,7 @@ export default function PayoutsPage() {
     setSelectedRowKeys([])
   }
 
-  // 批量导出选中
+  // 批量导出选中（并标记为已导出）
   const handleExportSelected = () => {
     if (selectedRowKeys.length === 0) {
       message.warning('请先选择要导出的账单')
@@ -239,6 +254,10 @@ export default function PayoutsPage() {
     }
     const selectedRecords = records.filter(r => selectedRowKeys.includes(r.key))
     exportBatchExcel(selectedRecords)
+    // 标记为已导出
+    setRecords(prev => prev.map(r => 
+      selectedRowKeys.includes(r.key) ? { ...r, exported: true } : r
+    ))
     message.success(`已导出 ${selectedRecords.length} 条明细`)
   }
 
@@ -292,8 +311,9 @@ export default function PayoutsPage() {
     },
     {
       title: '操作',
+      width: 280,
       render: (_, r) => (
-        <Space>
+        <Space size={4} wrap>
           <Button
             icon={<EyeOutlined />} size="small"
             onClick={() => setDetailDrawer({ open: true, record: r })}
@@ -304,8 +324,20 @@ export default function PayoutsPage() {
             icon={<DownloadOutlined />} size="small"
             onClick={() => handleExportSingle(r)}
           >
-            导出明细
+            {r.exported ? '再次导出' : '导出明细'}
           </Button>
+          {r.billStatus !== 'confirmed' && (
+            <Button
+              icon={<DollarOutlined />} size="small"
+              type="primary"
+              style={{ background: '#16997F', borderColor: '#16997F' }}
+              onClick={() => handleMarkSingleAsPaid(r)}
+              disabled={r.taxForm !== 'submitted'}
+              title={r.taxForm !== 'submitted' ? '税表未提交，无法标记' : ''}
+            >
+              标记已打款
+            </Button>
+          )}
         </Space>
       ),
     },
