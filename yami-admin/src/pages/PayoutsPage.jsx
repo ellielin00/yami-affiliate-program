@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import {
   Table, Button, Tag, Space, Card, Typography,
   Row, Col, Statistic, Drawer, Avatar, Select,
-  message
+  Badge, message
 } from 'antd'
 import {
   DownloadOutlined, EyeOutlined, CheckCircleOutlined,
