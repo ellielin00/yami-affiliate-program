@@ -24,9 +24,9 @@ const menuItems = [
       { key: 'review',    label: '› 创作者审核' },
       { key: 'manage',    label: '› 创作者管理' },
       { key: 'payouts',   label: '› 结账管理' },
-      { key: 'samples',   label: <div style={{ lineHeight: 1.3 }}>› 样品管理<div><Tag color="default" style={{ fontSize: 9, padding: '0 3px', lineHeight: '14px', marginTop: 2, opacity: 0.7 }}>首期不做</Tag></div></div> },
-      { key: 'recommended', label: <div style={{ lineHeight: 1.3 }}>› 推荐商品管理<div><Tag color="default" style={{ fontSize: 9, padding: '0 3px', lineHeight: '14px', marginTop: 2, opacity: 0.7 }}>首期不做</Tag></div></div> },
-      { key: 'commission', label: <div style={{ lineHeight: 1.3 }}>› 佣金管理<div><Tag color="default" style={{ fontSize: 9, padding: '0 3px', lineHeight: '14px', marginTop: 2, opacity: 0.7 }}>首期不做</Tag></div></div> },
+      { key: 'samples',   label: <div style={{ lineHeight: 1.3 }}>› 样品管理<div><Tag color="default" style={{ fontSize: 9, padding: '0 3px', lineHeight: '14px', marginTop: 2, opacity: 0.7 }}>首期不做页面</Tag></div></div> },
+      { key: 'recommended', label: <div style={{ lineHeight: 1.3 }}>› 推荐商品管理<div><Tag color="default" style={{ fontSize: 9, padding: '0 3px', lineHeight: '14px', marginTop: 2, opacity: 0.7 }}>首期不做页面</Tag></div></div> },
+      { key: 'commission', label: <div style={{ lineHeight: 1.3 }}>› 佣金管理<div><Tag color="default" style={{ fontSize: 9, padding: '0 3px', lineHeight: '14px', marginTop: 2, opacity: 0.7 }}>首期不做页面</Tag></div></div> },
     ],
   },
 ]
