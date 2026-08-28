@@ -427,6 +427,30 @@ input, select { font-family: inherit; }
 .hero-trust-text { font-size: 13px; color: var(--text-secondary); }
 .hero-trust-text strong { color: var(--text-primary); display: block; font-size: 14px; font-weight: 500; }
 
+/* ========== HERO AFFILIATE CTA (Influencer page) ========== */
+.hero-affiliate-cta {
+  margin-top: 32px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.affiliate-cta-text {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+.affiliate-cta-link {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ui-primary);
+  text-decoration: none;
+  transition: all var(--transition);
+}
+.affiliate-cta-link:hover {
+  color: var(--red-400);
+  text-decoration: underline;
+}
+
 /* ========== HERO VISUAL — Affiliate collage grid ========== */
 .hero-visual {
   position: relative;
@@ -3537,6 +3561,65 @@ input, select { font-family: inherit; }
   .cross-link-inner { flex-direction: column; text-align: center; padding: 32px 24px; }
 }
 
+/* ========== LANDING FAQ SECTION ========== */
+.landing-faq-section {
+  padding: 80px 0;
+  background: #fff;
+}
+.landing-faq-section .section-header {
+  margin-bottom: 48px;
+}
+.landing-faq-grid {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.landing-faq-item {
+  background: #fff;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.landing-faq-item:hover {
+  border-color: var(--neutral-300);
+  box-shadow: var(--shadow-subtle);
+}
+.landing-faq-question {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--neutral-900);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+.landing-faq-icon {
+  color: var(--neutral-400);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  transition: transform var(--transition);
+}
+.landing-faq-item.open .landing-faq-icon {
+  transform: rotate(45deg);
+}
+.landing-faq-answer {
+  display: none;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-default);
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+.landing-faq-item.open .landing-faq-answer {
+  display: block;
+}
+
 /* ========== INFLUENCER HERO VISUAL — 3-photo overlay layout ========== */
 .hero-visual-infl {
   position: relative;
@@ -4534,6 +4617,47 @@ input, select { font-family: inherit; }
     </div>
   </section>
 
+  <!-- FAQ Section -->
+  <section class="landing-faq-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">FAQ</span>
+        <h2>Frequently Asked Questions</h2>
+        <p>Everything you need to know about the Yami Creator Program.</p>
+      </div>
+      <div class="landing-faq-grid">
+        <div class="landing-faq-item" onclick="toggleLandingFaq(this)">
+          <div class="landing-faq-question">
+            How do I get paid?
+            <span class="landing-faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </div>
+          <div class="landing-faq-answer">Commissions are processed monthly. Once your tax form is submitted and verified, payouts are sent to your registered payment method by the 15th of each month for the prior month's confirmed earnings.</div>
+        </div>
+        <div class="landing-faq-item" onclick="toggleLandingFaq(this)">
+          <div class="landing-faq-question">
+            How long does commission take to confirm?
+            <span class="landing-faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </div>
+          <div class="landing-faq-answer">Commissions move from Pending to Confirmed once the buyer's package has been delivered. This usually takes 3-7 business days after the order ships.</div>
+        </div>
+        <div class="landing-faq-item" onclick="toggleLandingFaq(this)">
+          <div class="landing-faq-question">
+            Can I use my own promo code to buy for myself?
+            <span class="landing-faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </div>
+          <div class="landing-faq-answer">No. Self-purchasing using your own affiliate code is strictly prohibited per our Affiliate Terms. Doing so may result in account suspension.</div>
+        </div>
+        <div class="landing-faq-item" onclick="toggleLandingFaq(this)">
+          <div class="landing-faq-question">
+            What are collections and how do they work?
+            <span class="landing-faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </div>
+          <div class="landing-faq-answer">Collections let you group products into a shareable page with your tracking link. Perfect for haul videos, themed posts, or curated recommendations. Share the collection link and earn commission on any product purchased.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 
   <!-- Footer -->
   <footer class="footer-landing">
@@ -4624,23 +4748,9 @@ input, select { font-family: inherit; }
           <button class="btn-primary large" onclick="setUserType('influencer');showPage('page-onboard-1')">Apply as Influencer →</button>
           <button class="btn-ghost" onclick="document.querySelector('#page-landing-influencer .infl-feature')?.scrollIntoView({behavior:'smooth'})">See how it works</button>
         </div>
-        <div class="hero-trust">
-          <div class="hero-avatars">
-            <div class="hero-avatars-track" id="avatar-track-infl">
-              <div class="av av-1"></div>
-              <div class="av av-2"></div>
-              <div class="av av-3"></div>
-              <div class="av av-4"></div>
-              <div class="av av-5"></div>
-              <div class="av av-6"></div>
-              <div class="av av-7"></div>
-              <div class="av av-8"></div>
-            </div>
-          </div>
-          <div class="hero-trust-text">
-            <strong>1,200+ influencers</strong>
-            already earning with Yami
-          </div>
+        <div class="hero-affiliate-cta">
+          <span class="affiliate-cta-text">Don't have 5,000 followers?</span>
+          <a href="#" class="affiliate-cta-link" onclick="showPage('page-landing');return false;">Explore Affiliate Program →</a>
         </div>
       </div>
       <div class="hero-visual">
@@ -4981,6 +5091,54 @@ input, select { font-family: inherit; }
           <p>No worries &mdash; join as an Affiliate and start earning commissions right away. No follower requirement.</p>
         </div>
         <button class="btn-secondary large" onclick="showPage('page-landing')">Explore Affiliate Program &rarr;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="landing-faq-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">FAQ</span>
+        <h2>Frequently Asked Questions</h2>
+        <p>Everything you need to know about the Yami Influencer Program.</p>
+      </div>
+      <div class="landing-faq-grid">
+        <div class="landing-faq-item" onclick="toggleLandingFaq(this)">
+          <div class="landing-faq-question">
+            How do I get paid?
+            <span class="landing-faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </div>
+          <div class="landing-faq-answer">Commissions are processed monthly. Once your tax form is submitted and verified, payouts are sent to your registered payment method by the 15th of each month for the prior month's confirmed earnings.</div>
+        </div>
+        <div class="landing-faq-item" onclick="toggleLandingFaq(this)">
+          <div class="landing-faq-question">
+            How long does commission take to confirm?
+            <span class="landing-faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </div>
+          <div class="landing-faq-answer">Commissions move from Pending to Confirmed once the buyer's package has been delivered. This usually takes 3-7 business days after the order ships.</div>
+        </div>
+        <div class="landing-faq-item" onclick="toggleLandingFaq(this)">
+          <div class="landing-faq-question">
+            Can I use my own promo code to buy for myself?
+            <span class="landing-faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </div>
+          <div class="landing-faq-answer">No. Self-purchasing using your own affiliate code is strictly prohibited per our Affiliate Terms. Doing so may result in account suspension.</div>
+        </div>
+        <div class="landing-faq-item" onclick="toggleLandingFaq(this)">
+          <div class="landing-faq-question">
+            How do free samples work?
+            <span class="landing-faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </div>
+          <div class="landing-faq-answer">You can claim one free sample at a time. The order ships at $0. Once you post content featuring the sample, you can claim another. Samples are refreshed monthly.</div>
+        </div>
+        <div class="landing-faq-item" onclick="toggleLandingFaq(this)">
+          <div class="landing-faq-question">
+            What are collections and how do they work?
+            <span class="landing-faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </div>
+          <div class="landing-faq-answer">Collections let you group products into a shareable page with your tracking link. Perfect for haul videos, themed posts, or curated recommendations. Share the collection link and earn commission on any product purchased.</div>
+        </div>
       </div>
     </div>
   </section>
@@ -7763,6 +7921,20 @@ window.toggleFaq = function(el) {
   var plusSvg = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>';
   var minusSvg = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>';
   icon.innerHTML = open ? plusSvg : minusSvg;
+};
+
+// Landing page FAQ toggle
+window.toggleLandingFaq = function(el) {
+  var isOpen = el.classList.contains('open');
+  // Close all other FAQ items
+  var allItems = el.parentElement.querySelectorAll('.landing-faq-item');
+  for (var i = 0; i < allItems.length; i++) {
+    allItems[i].classList.remove('open');
+  }
+  // Toggle current item
+  if (!isOpen) {
+    el.classList.add('open');
+  }
 };
 
 
