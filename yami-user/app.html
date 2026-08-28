@@ -2202,6 +2202,43 @@ input, select { font-family: inherit; }
   transform: translateY(-1px);
 }
 
+/* Quick Copy Link on Hover */
+.product-card-img .quick-copy-link {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+  background: rgba(255,255,255,0.95);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.2s ease;
+  z-index: 5;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  color: var(--neutral-700);
+}
+.product-card:hover .quick-copy-link {
+  opacity: 1;
+  transform: scale(1);
+}
+.quick-copy-link:hover {
+  background: var(--neutral-950);
+  color: #fff;
+}
+.quick-copy-link svg {
+  width: 14px;
+  height: 14px;
+}
+.quick-copy-link.copied {
+  background: var(--emerald-500);
+  color: #fff;
+}
+
 /* ========== PRODUCT IMAGES ========== */
 .prod-img {
   width: 100%;
@@ -2794,11 +2831,48 @@ input, select { font-family: inherit; }
   padding: 24px;
   cursor: pointer;
   transition: all var(--transition);
+  position: relative;
 }
 .collection-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-raised);
   border-color: transparent;
+}
+/* Quick Copy Link for Collection Cards */
+.collection-card .quick-copy-link {
+  position: absolute;
+  top: 12px;
+  right: 52px;
+  width: 32px;
+  height: 32px;
+  background: var(--neutral-100);
+  border: none;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.2s ease;
+  z-index: 5;
+  color: var(--text-secondary);
+}
+.collection-card:hover .quick-copy-link {
+  opacity: 1;
+  transform: scale(1);
+}
+.collection-card .quick-copy-link:hover {
+  background: var(--neutral-950);
+  color: #fff;
+}
+.collection-card .quick-copy-link svg {
+  width: 14px;
+  height: 14px;
+}
+.collection-card .quick-copy-link.copied {
+  background: var(--emerald-500);
+  color: #fff;
 }
 .collection-card h4 {
   font-size: 17px;
@@ -3257,6 +3331,37 @@ input, select { font-family: inherit; }
 .atc-option .atc-name { font-size: 14px; font-weight: 500; color: var(--text-primary); flex: 1; }
 .atc-option .atc-count { font-size: 12px; color: var(--text-secondary); }
 .atc-option.added .atc-count { color: var(--emerald-600); font-weight: 600; }
+
+/* Create New Collection Button - Low-key dashed style */
+.atc-create-btn {
+  width: 100%;
+  margin-top: 12px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: transparent;
+  border: 1.5px dashed var(--neutral-300);
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.atc-create-btn:hover {
+  border-color: var(--neutral-400);
+  color: var(--text-primary);
+  background: var(--neutral-50);
+}
+.atc-create-btn svg {
+  color: var(--neutral-400);
+  transition: color var(--transition);
+}
+.atc-create-btn:hover svg {
+  color: var(--text-secondary);
+}
 
 /* ========== BILLING DETAIL PAGE ========== */
 .billing-summary-card {
@@ -4387,23 +4492,9 @@ input, select { font-family: inherit; }
           <button class="btn-primary large" onclick="setUserType('affiliate');showPage('page-onboard-1')">Join as Affiliate →</button>
           <button class="btn-ghost" onclick="document.getElementById('how-it-works').scrollIntoView({behavior:'smooth'})">How it works</button>
         </div>
-        <div class="hero-trust">
-          <div class="hero-avatars">
-            <div class="hero-avatars-track" id="avatar-track">
-              <div class="av av-1"></div>
-              <div class="av av-2"></div>
-              <div class="av av-3"></div>
-              <div class="av av-4"></div>
-              <div class="av av-5"></div>
-              <div class="av av-6"></div>
-              <div class="av av-7"></div>
-              <div class="av av-8"></div>
-            </div>
-          </div>
-          <div class="hero-trust-text">
-            <strong>3,200+ creators</strong>
-            already earning with Yami
-          </div>
+        <div class="hero-affiliate-cta">
+          <span class="affiliate-cta-text">Already have 5K+ followers?</span>
+          <a href="#" class="affiliate-cta-link" onclick="showPage('page-landing-influencer');return false;">Explore the Influencer Program to Earn More →</a>
         </div>
       </div>
 
@@ -6710,14 +6801,15 @@ input, select { font-family: inherit; }
       </div>
     </div>
     <div id="atc-create-section">
-      <button class="btn-secondary" style="width:100%;margin-top:12px;" id="atc-create-btn" onclick="showAtcCreateInput()">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      <button class="atc-create-btn" id="atc-create-btn" onclick="showAtcCreateInput()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         Create New Collection
       </button>
       <div id="atc-create-form" style="display:none;margin-top:12px;">
         <div style="display:flex;gap:8px;">
           <input type="text" id="atc-new-name" placeholder="Collection name" style="flex:1;height:40px;border:1px solid var(--neutral-300);border-radius:8px;padding:0 14px;font-size:14px;font-family:var(--font-main);transition:all var(--transition);outline:none;" onfocus="this.style.borderColor='var(--neutral-900)';this.style.boxShadow='0 0 0 3px rgba(0,0,0,0.08)'" onblur="this.style.borderColor='var(--neutral-300)';this.style.boxShadow='none'">
-          <button class="btn-primary" style="height:40px;padding:0 20px;font-size:13px;" onclick="createAndAddToCollection()">Create & Add</button>
+          <button class="btn-primary" style="height:40px;padding:0 16px;font-size:13px;" onclick="createAndAddToCollection()">Create</button>
+          <button class="btn-ghost" style="height:40px;padding:0 12px;font-size:13px;color:var(--text-secondary);" onclick="hideAtcCreateInput()">Cancel</button>
         </div>
       </div>
     </div>
@@ -7735,6 +7827,75 @@ input, select { font-family: inherit; }
   window._updateLogos = updateLogos;
 })();
 
+// ===== Quick Copy Link for Product Cards and Collection Cards =====
+window.initQuickCopyLinks = function() {
+  var linkIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>';
+  var checkIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+  
+  // Add to product cards
+  var productImgs = document.querySelectorAll('.product-card .product-card-img');
+  for (var i = 0; i < productImgs.length; i++) {
+    if (productImgs[i].querySelector('.quick-copy-link')) continue;
+    
+    var btn = document.createElement('button');
+    btn.className = 'quick-copy-link';
+    btn.title = 'Copy affiliate link';
+    btn.innerHTML = linkIcon;
+    btn.setAttribute('data-link-icon', linkIcon);
+    btn.setAttribute('data-check-icon', checkIcon);
+    btn.onclick = function(e) {
+      e.stopPropagation();
+      window.quickCopyLink(this, 'product');
+    };
+    productImgs[i].appendChild(btn);
+  }
+  
+  // Add to collection cards
+  var collectionCards = document.querySelectorAll('.collection-card');
+  for (var j = 0; j < collectionCards.length; j++) {
+    if (collectionCards[j].querySelector('.quick-copy-link')) continue;
+    
+    var btn = document.createElement('button');
+    btn.className = 'quick-copy-link';
+    btn.title = 'Copy collection link';
+    btn.innerHTML = linkIcon;
+    btn.setAttribute('data-link-icon', linkIcon);
+    btn.setAttribute('data-check-icon', checkIcon);
+    btn.onclick = function(e) {
+      e.stopPropagation();
+      window.quickCopyLink(this, 'collection');
+    };
+    collectionCards[j].appendChild(btn);
+  }
+};
+
+window.quickCopyLink = function(btn, type) {
+  // Generate a mock link (in real app, this would be specific to the item)
+  var link = type === 'collection' 
+    ? 'https://yamibuy.com/c/k-beauty-essentials?ref=AMYCHEN'
+    : 'https://yamibuy.com/p/12345?ref=AMYCHEN';
+  
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(link);
+  }
+  
+  // Show copied feedback
+  var linkIcon = btn.getAttribute('data-link-icon');
+  var checkIcon = btn.getAttribute('data-check-icon');
+  btn.innerHTML = checkIcon;
+  btn.classList.add('copied');
+  
+  // Show toast
+  var msg = type === 'collection' ? '✓ Collection link copied' : '✓ Link copied to clipboard';
+  showToast(msg);
+  
+  // Reset after 1.5s
+  setTimeout(function() {
+    btn.innerHTML = linkIcon;
+    btn.classList.remove('copied');
+  }, 1500);
+};
+
 // ===== User Type Management =====
 // 'influencer' or 'affiliate'
 var _userType = 'influencer';
@@ -8147,6 +8308,13 @@ window.showAtcCreateInput = function() {
   document.getElementById('atc-create-btn').style.display = 'none';
   document.getElementById('atc-create-form').style.display = 'block';
   document.getElementById('atc-new-name').focus();
+};
+
+window.hideAtcCreateInput = function() {
+  document.getElementById('atc-create-form').style.display = 'none';
+  document.getElementById('atc-create-btn').style.display = '';
+  document.getElementById('atc-new-name').value = '';
+  document.getElementById('atc-new-name').style.borderColor = 'var(--neutral-300)';
 };
 
 window.createAndAddToCollection = function() {
@@ -8586,6 +8754,7 @@ document.addEventListener('DOMContentLoaded', function() {
   window.initCatFilter();
   window.applyUserTypeUI();
   window._updateLogos();
+  window.initQuickCopyLinks();
 });
 
 window.filterOrders = function(btn, status) {
