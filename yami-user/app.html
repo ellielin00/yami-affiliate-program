@@ -2592,8 +2592,9 @@ input, select { font-family: inherit; }
   flex-shrink: 0;
   letter-spacing: 0.04em;
 }
-.status-confirmed { background: var(--emerald-50); color: var(--emerald-600); }
+.status-confirmed { background: #E8F4FF; color: #0076DE; }
 .status-pending { background: var(--amber-50); color: var(--amber-500); }
+.status-paid { background: var(--emerald-50); color: var(--emerald-600); }
 .status-cancelled { background: var(--neutral-100); color: var(--neutral-500); }
 .status-refunded { background: var(--neutral-100); color: var(--neutral-500); }
 
@@ -4163,18 +4164,32 @@ input, select { font-family: inherit; }
 .power-creator-badge {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  background: var(--purple-50);
-  color: var(--purple-500);
-  padding: 6px 16px;
+  gap: 8px;
+  background: linear-gradient(135deg, #F3EEFF 0%, #E8DFFF 100%);
+  border: none;
+  color: #7C3AED;
+  padding: 0 14px 0 0;
+  height: 24px;
   border-radius: var(--radius-full);
   font-size: 13px;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 0.01em;
   white-space: nowrap;
+  position: relative;
+  padding-left: 24px;
+  margin-left: 14px;
 }
 .dashboard-greeting .power-creator-badge { margin-top: 8px; }
-.power-creator-badge svg { width: 16px; height: 16px; flex-shrink: 0; fill: #FFD93D; }
+.power-creator-badge img {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  position: absolute;
+  left: -14px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.power-creator-badge svg { display: none; }
 
 /* Collection grid image hover */
 .coll-img-wrap {
@@ -5643,7 +5658,7 @@ input, select { font-family: inherit; }
       <div>
         <h1>Hello, Amy 👋</h1>
         <p>Here's how your shop is performing today</p>
-        <span class="power-creator-badge influencer-only"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Power Creator</span>
+        <span class="power-creator-badge influencer-only"><img src="Images/power-creator-badge.png" alt=""> Power Creator</span>
       </div>
       <div class="date">Sunday, April 12, 2026</div>
     </div>
@@ -6153,6 +6168,7 @@ input, select { font-family: inherit; }
 
     <div class="status-legend">
       <h4>Commission Status Guide</h4>
+      <div class="legend-row"><span class="status-tag status-paid">PAID</span> 佣金已打款至您的注册付款账户。</div>
       <div class="legend-row"><span class="status-tag status-confirmed">CONFIRMED</span> 佣金已出账，将在下一个打款周期处理。</div>
       <div class="legend-row"><span class="status-tag status-pending">PENDING</span> 佣金未出账，账期结束后将自动确认。</div>
     </div>
@@ -6845,7 +6861,7 @@ input, select { font-family: inherit; }
         <h2>Amy Chen</h2>
         <div class="meta">amy.chen (at) mail · Creator since March 2026</div>
         <div class="badges influencer-only">
-          <span class="power-creator-badge"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Power Creator</span>
+          <span class="power-creator-badge"><img src="Images/power-creator-badge.png" alt=""> Power Creator</span>
         </div>
       </div>
     </div>
@@ -9008,7 +9024,20 @@ function initDragDrop() {
 }
 initDragDrop();
 
-window.openMobileNav = function() { document.getElementById('mobile-nav').classList.add('active'); };
+window.openMobileNav = function() {
+  var nav = document.getElementById('mobile-nav');
+  nav.classList.add('active');
+  // Update active state based on current page
+  var currentPage = document.querySelector('.page.active');
+  var currentPageId = currentPage ? currentPage.id : '';
+  var links = nav.querySelectorAll('a[data-page]');
+  for (var i = 0; i < links.length; i++) {
+    links[i].classList.remove('active');
+    if (links[i].getAttribute('data-page') === currentPageId) {
+      links[i].classList.add('active');
+    }
+  }
+};
 window.closeMobileNav = function() { document.getElementById('mobile-nav').classList.remove('active'); };
 document.getElementById('mobile-nav').addEventListener('click', function(e) {
   if (e.target === document.getElementById('mobile-nav')) window.closeMobileNav();
@@ -9225,13 +9254,13 @@ document.getElementById('mobile-nav').addEventListener('click', function(e) {
     <button class="mobile-nav-close" onclick="closeMobileNav()">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
-    <a href="#" onclick="event.preventDefault();closeMobileNav();showPage('page-dashboard-home')">Dashboard</a>
-    <a href="#" onclick="event.preventDefault();closeMobileNav();showPage('page-dashboard-share')">Share</a>
-    <a href="#" onclick="event.preventDefault();closeMobileNav();showPage('page-dashboard-wallet')">Wallet</a>
-    <a href="#" onclick="event.preventDefault();closeMobileNav();showPage('page-dashboard-profile')">Profile &amp; Settings</a>
+    <a href="#" data-page="page-dashboard-home" onclick="event.preventDefault();closeMobileNav();showPage('page-dashboard-home')">Dashboard</a>
+    <a href="#" data-page="page-dashboard-share" onclick="event.preventDefault();closeMobileNav();showPage('page-dashboard-share')">Share</a>
+    <a href="#" data-page="page-dashboard-wallet" onclick="event.preventDefault();closeMobileNav();showPage('page-dashboard-wallet')">Wallet</a>
+    <a href="#" data-page="page-dashboard-profile" onclick="event.preventDefault();closeMobileNav();showPage('page-dashboard-profile')">Profile &amp; Settings</a>
     <div class="mobile-nav-divider"></div>
-    <a href="#" onclick="event.preventDefault();closeMobileNav();showPage('page-landing')">Landing Page</a>
-    <a href="#" onclick="event.preventDefault();closeMobileNav();showPage('page-onboard-1')">Join for Free</a>
+    <a href="#" data-page="page-landing" onclick="event.preventDefault();closeMobileNav();showPage('page-landing')">Landing Page</a>
+    <a href="#" data-page="page-onboard-1" onclick="event.preventDefault();closeMobileNav();showPage('page-onboard-1')">Join for Free</a>
   </div>
 </div>
 <script>
